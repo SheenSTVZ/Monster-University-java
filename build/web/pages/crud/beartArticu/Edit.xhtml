@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BeartArticuEditDlg" widgetVar="BeartArticuEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBeartArticuTitle}">
+            <h:form id="BeartArticuEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{beartArticuController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBeartArticuLabel_feartCodigo}" for="feartCodigo" />
+                        <p:inputText id="feartCodigo" value="#{beartArticuController.selected.feartCodigo}" title="#{bundle.EditBeartArticuTitle_feartCodigo}" required="true" requiredMessage="#{bundle.EditBeartArticuRequiredMessage_feartCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditBeartArticuLabel_feartDescri}" for="feartDescri" />
+                        <p:inputText id="feartDescri" value="#{beartArticuController.selected.feartDescri}" title="#{bundle.EditBeartArticuTitle_feartDescri}" required="true" requiredMessage="#{bundle.EditBeartArticuRequiredMessage_feartDescri}"/>
+                        <p:outputLabel value="#{bundle.EditBeartArticuLabel_feartStock}" for="feartStock" />
+                        <p:inputText id="feartStock" value="#{beartArticuController.selected.feartStock}" title="#{bundle.EditBeartArticuTitle_feartStock}" required="true" requiredMessage="#{bundle.EditBeartArticuRequiredMessage_feartStock}"/>
+                        <p:outputLabel value="#{bundle.EditBeartArticuLabel_feartPrecom}" for="feartPrecom" />
+                        <p:inputText id="feartPrecom" value="#{beartArticuController.selected.feartPrecom}" title="#{bundle.EditBeartArticuTitle_feartPrecom}" required="true" requiredMessage="#{bundle.EditBeartArticuRequiredMessage_feartPrecom}"/>
+                        <p:outputLabel value="#{bundle.EditBeartArticuLabel_feartObser}" for="feartObser" />
+                        <p:inputTextarea rows="4" cols="30" id="feartObser" value="#{beartArticuController.selected.feartObser}" title="#{bundle.EditBeartArticuTitle_feartObser}" />
+                        <p:outputLabel value="#{bundle.EditBeartArticuLabel_beinvCodigo}" for="beinvCodigo" />
+                        <p:selectOneMenu id="beinvCodigo" value="#{beartArticuController.selected.beinvCodigo}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{beinvInvenController.itemsAvailableSelectOne}"
+                                           var="beinvCodigoItem"
+                                           itemValue="#{beinvCodigoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditBeartArticuLabel_beedaNumero2}" for="beedaNumero2" />
+                        <p:selectOneMenu id="beedaNumero2" value="#{beartArticuController.selected.beedaNumero2}" required="true" requiredMessage="#{bundle.EditBeartArticuRequiredMessage_beedaNumero2}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{beedaEntalmController.itemsAvailableSelectOne}"
+                                           var="beedaNumero2Item"
+                                           itemValue="#{beedaNumero2Item}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{beartArticuController.update}" value="#{bundle.Save}" update="display,:BeartArticuListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BeartArticuEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BeartArticuEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

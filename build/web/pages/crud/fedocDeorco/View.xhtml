@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FedocDeorcoViewDlg" widgetVar="FedocDeorcoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFedocDeorcoTitle}">
+            <h:form id="FedocDeorcoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fedocDeorcoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFedocDeorcoLabel_fecocNumero2}"/>
+                        <h:outputText value="#{fedocDeorcoController.selected.fecocNumero2}" title="#{bundle.ViewFedocDeorcoTitle_fecocNumero2}"/>
+                        <h:outputText value="#{bundle.ViewFedocDeorcoLabel_fedocCanti}"/>
+                        <h:outputText value="#{fedocDeorcoController.selected.fedocCanti}" title="#{bundle.ViewFedocDeorcoTitle_fedocCanti}"/>
+                        <h:outputText value="#{bundle.ViewFedocDeorcoLabel_fedocCoscom}"/>
+                        <h:outputText value="#{fedocDeorcoController.selected.fedocCoscom}" title="#{bundle.ViewFedocDeorcoTitle_fedocCoscom}"/>
+                        <h:outputText value="#{bundle.ViewFedocDeorcoLabel_fedocSubtot}"/>
+                        <h:outputText value="#{fedocDeorcoController.selected.fedocSubtot}" title="#{bundle.ViewFedocDeorcoTitle_fedocSubtot}"/>
+                        <h:outputText value="#{bundle.ViewFedocDeorcoLabel_fecocCaor}"/>
+                        <h:outputText value="#{fedocDeorcoController.selected.fecocCaor}" title="#{bundle.ViewFedocDeorcoTitle_fecocCaor}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FedocDeorcoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

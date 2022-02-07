@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <body>
+        <div class="ingreso">
+                <div class="contenedor">
+                    <div class="hero"></div>
+                    <div class="login-box" id="login">
+			<div class="container">
+				<h2>LOGIN</h2>
+				<h:form>
+					<div class="user-box">
+                                            <h:outputText class="lblcampo" value="Usuario: "/>    
+                                            <p:inputText type="text" id="uname" required="true" value="#{loginController.usuario.feempCodigo.feempEmail}"/>
+					</div>
+					<div class="user-box">
+                                            <h:outputText class="lblcampo" value="Contraseña: "/>
+                                            <p:inputText type="password" id="psw" required="true" value="#{loginController.usuario.xeusuPaswd}"/>
+					</div>
+                                    <div class="principal">
+                                        <p:commandButton value="Ingresar"
+                                                         action="#{loginController.doLogin()}"
+                                                         id="submitButton"
+                                          ajax="false"/>
+                                    </div>
+					<br/>
+<!--					<br/>
+                                        <p:link value="No tienes una cuenta ? Registrate aqui !" outcome="registro"/>-->
+                                    
+				</h:form>
+			</div>
+		</div>
+                </div>
+        </div>
+    </body>
+</html>

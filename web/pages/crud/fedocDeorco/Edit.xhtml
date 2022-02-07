@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FedocDeorcoEditDlg" widgetVar="FedocDeorcoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFedocDeorcoTitle}">
+            <h:form id="FedocDeorcoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fedocDeorcoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFedocDeorcoLabel_fecocNumero2}" for="fecocNumero2" />
+                        <p:inputText id="fecocNumero2" value="#{fedocDeorcoController.selected.fecocNumero2}" title="#{bundle.EditFedocDeorcoTitle_fecocNumero2}" required="true" requiredMessage="#{bundle.EditFedocDeorcoRequiredMessage_fecocNumero2}"/>
+                        <p:outputLabel value="#{bundle.EditFedocDeorcoLabel_fedocCanti}" for="fedocCanti" />
+                        <p:inputText id="fedocCanti" value="#{fedocDeorcoController.selected.fedocCanti}" title="#{bundle.EditFedocDeorcoTitle_fedocCanti}" required="true" requiredMessage="#{bundle.EditFedocDeorcoRequiredMessage_fedocCanti}"/>
+                        <p:outputLabel value="#{bundle.EditFedocDeorcoLabel_fedocCoscom}" for="fedocCoscom" />
+                        <p:inputText id="fedocCoscom" value="#{fedocDeorcoController.selected.fedocCoscom}" title="#{bundle.EditFedocDeorcoTitle_fedocCoscom}" required="true" requiredMessage="#{bundle.EditFedocDeorcoRequiredMessage_fedocCoscom}"/>
+                        <p:outputLabel value="#{bundle.EditFedocDeorcoLabel_fedocSubtot}" for="fedocSubtot" />
+                        <p:inputText id="fedocSubtot" value="#{fedocDeorcoController.selected.fedocSubtot}" title="#{bundle.EditFedocDeorcoTitle_fedocSubtot}" required="true" requiredMessage="#{bundle.EditFedocDeorcoRequiredMessage_fedocSubtot}"/>
+                        <p:outputLabel value="#{bundle.EditFedocDeorcoLabel_fecocCaor}" for="fecocCaor" />
+                        <p:selectOneMenu id="fecocCaor" value="#{fedocDeorcoController.selected.fecocCaor}" required="true" requiredMessage="#{bundle.EditFedocDeorcoRequiredMessage_fecocCaor}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fecocCaorController.itemsAvailableSelectOne}"
+                                           var="fecocCaorItem"
+                                           itemValue="#{fecocCaorItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fedocDeorcoController.update}" value="#{bundle.Save}" update="display,:FedocDeorcoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FedocDeorcoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FedocDeorcoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

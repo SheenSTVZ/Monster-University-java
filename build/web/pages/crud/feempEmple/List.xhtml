@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFeempEmpleTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="FeempEmpleListForm">
+                <p:panel header="#{bundle.ListFeempEmpleTitle}">
+                    <p:dataTable id="datalist" value="#{feempEmpleController.items}" var="item"
+                                 selectionMode="single" selection="#{feempEmpleController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.feempCodigo}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempCodigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempApelli}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempApelli}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempNombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempNombre}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempFecnac}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempFecnac}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempFecsal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempFecsal}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempDirec}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempDirec}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempTelef}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempTelef}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempEmail}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempEmail}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempCedula}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempCedula}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempFoto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempFoto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempCarfam}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempCarfam}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempPasapo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempPasapo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_feempDiscapa}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feempDiscapa}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_bealmCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.bealmCodigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_fecdcCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecdcCodigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_pecarCargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pecarCargo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_peescCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.peescCodigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_pesexCodigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pesexCodigo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFeempEmpleTitle_peparParro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.peparParro}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{feempEmpleController.prepareCreate}" update=":FeempEmpleCreateForm" oncomplete="PF('FeempEmpleCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":FeempEmpleViewForm" oncomplete="PF('FeempEmpleViewDialog').show()" disabled="#{empty feempEmpleController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":FeempEmpleEditForm" oncomplete="PF('FeempEmpleEditDialog').show()" disabled="#{empty feempEmpleController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{feempEmpleController.destroy}" update=":growl,datalist" disabled="#{empty feempEmpleController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

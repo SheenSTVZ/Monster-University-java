@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BesdaSalalmEditDlg" widgetVar="BesdaSalalmEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBesdaSalalmTitle}">
+            <h:form id="BesdaSalalmEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{besdaSalalmController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBesdaSalalmLabel_besdaNumero}" for="besdaNumero" />
+                        <p:inputText id="besdaNumero" value="#{besdaSalalmController.selected.besdaNumero}" title="#{bundle.EditBesdaSalalmTitle_besdaNumero}" required="true" requiredMessage="#{bundle.EditBesdaSalalmRequiredMessage_besdaNumero}"/>
+                        <p:outputLabel value="#{bundle.EditBesdaSalalmLabel_besdaResponsable}" for="besdaResponsable" />
+                        <p:inputText id="besdaResponsable" value="#{besdaSalalmController.selected.besdaResponsable}" title="#{bundle.EditBesdaSalalmTitle_besdaResponsable}" required="true" requiredMessage="#{bundle.EditBesdaSalalmRequiredMessage_besdaResponsable}"/>
+                        <p:outputLabel value="#{bundle.EditBesdaSalalmLabel_besdaFechasalida}" for="besdaFechasalida" />
+                        <p:calendar id="besdaFechasalida" pattern="MM/dd/yyyy" value="#{besdaSalalmController.selected.besdaFechasalida}" title="#{bundle.EditBesdaSalalmTitle_besdaFechasalida}" required="true" requiredMessage="#{bundle.EditBesdaSalalmRequiredMessage_besdaFechasalida}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBesdaSalalmLabel_besdaFechaentrega}" for="besdaFechaentrega" />
+                        <p:calendar id="besdaFechaentrega" pattern="MM/dd/yyyy" value="#{besdaSalalmController.selected.besdaFechaentrega}" title="#{bundle.EditBesdaSalalmTitle_besdaFechaentrega}" required="true" requiredMessage="#{bundle.EditBesdaSalalmRequiredMessage_besdaFechaentrega}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditBesdaSalalmLabel_besdaCantidade}" for="besdaCantidade" />
+                        <p:inputText id="besdaCantidade" value="#{besdaSalalmController.selected.besdaCantidade}" title="#{bundle.EditBesdaSalalmTitle_besdaCantidade}" required="true" requiredMessage="#{bundle.EditBesdaSalalmRequiredMessage_besdaCantidade}"/>
+                        <p:outputLabel value="#{bundle.EditBesdaSalalmLabel_feartCodigo}" for="feartCodigo" />
+                        <p:selectOneMenu id="feartCodigo" value="#{besdaSalalmController.selected.feartCodigo}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{beartArticuController.itemsAvailableSelectOne}"
+                                           var="feartCodigoItem"
+                                           itemValue="#{feartCodigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{besdaSalalmController.update}" value="#{bundle.Save}" update="display,:BesdaSalalmListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BesdaSalalmEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BesdaSalalmEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FecocCaorCreateDlg" widgetVar="FecocCaorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFecocCaorTitle}">
+            <h:form id="FecocCaorCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fecocCaorController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFecocCaorLabel_fecocNumero2}" for="fecocNumero2" />
+                        <p:inputText id="fecocNumero2" value="#{fecocCaorController.selected.fecocNumero2}" title="#{bundle.CreateFecocCaorTitle_fecocNumero2}" required="true" requiredMessage="#{bundle.CreateFecocCaorRequiredMessage_fecocNumero2}"/>
+                        <p:outputLabel value="#{bundle.CreateFecocCaorLabel_fecocFecha}" for="fecocFecha" />
+                        <p:calendar id="fecocFecha" pattern="MM/dd/yyyy" value="#{fecocCaorController.selected.fecocFecha}" title="#{bundle.EditFecocCaorTitle_fecocFecha}" required="true" requiredMessage="#{bundle.EditFecocCaorRequiredMessage_fecocFecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateFecocCaorLabel_fecocTotal}" for="fecocTotal" />
+                        <p:inputText id="fecocTotal" value="#{fecocCaorController.selected.fecocTotal}" title="#{bundle.CreateFecocCaorTitle_fecocTotal}" required="true" requiredMessage="#{bundle.CreateFecocCaorRequiredMessage_fecocTotal}"/>
+                        <p:outputLabel value="#{bundle.CreateFecocCaorLabel_fecocIva}" for="fecocIva" />
+                        <p:inputText id="fecocIva" value="#{fecocCaorController.selected.fecocIva}" title="#{bundle.CreateFecocCaorTitle_fecocIva}" required="true" requiredMessage="#{bundle.CreateFecocCaorRequiredMessage_fecocIva}"/>
+                        <p:outputLabel value="#{bundle.CreateFecocCaorLabel_fecocDescu}" for="fecocDescu" />
+                        <p:inputText id="fecocDescu" value="#{fecocCaorController.selected.fecocDescu}" title="#{bundle.CreateFecocCaorTitle_fecocDescu}" required="true" requiredMessage="#{bundle.CreateFecocCaorRequiredMessage_fecocDescu}"/>
+                        <p:outputLabel value="#{bundle.CreateFecocCaorLabel_fecocTotpag}" for="fecocTotpag" />
+                        <p:inputText id="fecocTotpag" value="#{fecocCaorController.selected.fecocTotpag}" title="#{bundle.CreateFecocCaorTitle_fecocTotpag}" required="true" requiredMessage="#{bundle.CreateFecocCaorRequiredMessage_fecocTotpag}"/>
+                        <p:outputLabel value="#{bundle.CreateFecocCaorLabel_feprvCodigo3}" for="feprvCodigo3" />
+                        <p:selectOneMenu id="feprvCodigo3" value="#{fecocCaorController.selected.feprvCodigo3}" required="true" requiredMessage="#{bundle.EditFecocCaorRequiredMessage_feprvCodigo3}">
+                            <f:selectItems value="#{feprvProvController.itemsAvailableSelectOne}"
+                                           var="feprvCodigo3Item"
+                                           itemValue="#{feprvCodigo3Item}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateFecocCaorLabel_fedocDeorco}" for="fedocDeorco" />
+                        <p:selectOneMenu id="fedocDeorco" value="#{fecocCaorController.selected.fedocDeorco}" >
+                            <f:selectItems value="#{fedocDeorcoController.itemsAvailableSelectOne}"
+                                           var="fedocDeorcoItem"
+                                           itemValue="#{fedocDeorcoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fecocCaorController.create}" value="#{bundle.Save}" update="display,:FecocCaorListForm:datalist,:growl" oncomplete="handleSubmit(args,'FecocCaorCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FecocCaorCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

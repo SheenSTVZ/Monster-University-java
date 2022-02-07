@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FecocCaorViewDlg" widgetVar="FecocCaorViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFecocCaorTitle}">
+            <h:form id="FecocCaorViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fecocCaorController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFecocCaorLabel_fecocNumero2}"/>
+                        <h:outputText value="#{fecocCaorController.selected.fecocNumero2}" title="#{bundle.ViewFecocCaorTitle_fecocNumero2}"/>
+                        <h:outputText value="#{bundle.ViewFecocCaorLabel_fecocFecha}"/>
+                        <h:outputText value="#{fecocCaorController.selected.fecocFecha}" title="#{bundle.ViewFecocCaorTitle_fecocFecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFecocCaorLabel_fecocTotal}"/>
+                        <h:outputText value="#{fecocCaorController.selected.fecocTotal}" title="#{bundle.ViewFecocCaorTitle_fecocTotal}"/>
+                        <h:outputText value="#{bundle.ViewFecocCaorLabel_fecocIva}"/>
+                        <h:outputText value="#{fecocCaorController.selected.fecocIva}" title="#{bundle.ViewFecocCaorTitle_fecocIva}"/>
+                        <h:outputText value="#{bundle.ViewFecocCaorLabel_fecocDescu}"/>
+                        <h:outputText value="#{fecocCaorController.selected.fecocDescu}" title="#{bundle.ViewFecocCaorTitle_fecocDescu}"/>
+                        <h:outputText value="#{bundle.ViewFecocCaorLabel_fecocTotpag}"/>
+                        <h:outputText value="#{fecocCaorController.selected.fecocTotpag}" title="#{bundle.ViewFecocCaorTitle_fecocTotpag}"/>
+                        <h:outputText value="#{bundle.ViewFecocCaorLabel_feprvCodigo3}"/>
+                        <h:outputText value="#{fecocCaorController.selected.feprvCodigo3}" title="#{bundle.ViewFecocCaorTitle_feprvCodigo3}"/>
+                        <h:outputText value="#{bundle.ViewFecocCaorLabel_fedocDeorco}"/>
+                        <h:outputText value="#{fecocCaorController.selected.fedocDeorco}" title="#{bundle.ViewFecocCaorTitle_fedocDeorco}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FecocCaorViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

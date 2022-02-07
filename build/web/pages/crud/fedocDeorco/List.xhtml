@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFedocDeorcoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="FedocDeorcoListForm">
+                <p:panel header="#{bundle.ListFedocDeorcoTitle}">
+                    <p:dataTable id="datalist" value="#{fedocDeorcoController.items}" var="item"
+                                 selectionMode="single" selection="#{fedocDeorcoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.fecocNumero2}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFedocDeorcoTitle_fecocNumero2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecocNumero2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFedocDeorcoTitle_fedocCanti}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fedocCanti}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFedocDeorcoTitle_fedocCoscom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fedocCoscom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFedocDeorcoTitle_fedocSubtot}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fedocSubtot}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFedocDeorcoTitle_fecocCaor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecocCaor}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{fedocDeorcoController.prepareCreate}" update=":FedocDeorcoCreateForm" oncomplete="PF('FedocDeorcoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":FedocDeorcoViewForm" oncomplete="PF('FedocDeorcoViewDialog').show()" disabled="#{empty fedocDeorcoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":FedocDeorcoEditForm" oncomplete="PF('FedocDeorcoEditDialog').show()" disabled="#{empty fedocDeorcoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{fedocDeorcoController.destroy}" update=":growl,datalist" disabled="#{empty fedocDeorcoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

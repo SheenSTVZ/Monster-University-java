@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BeedaEntalmCreateDlg" widgetVar="BeedaEntalmCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBeedaEntalmTitle}">
+            <h:form id="BeedaEntalmCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{beedaEntalmController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBeedaEntalmLabel_beedaNumero2}" for="beedaNumero2" />
+                        <p:inputText id="beedaNumero2" value="#{beedaEntalmController.selected.beedaNumero2}" title="#{bundle.CreateBeedaEntalmTitle_beedaNumero2}" required="true" requiredMessage="#{bundle.CreateBeedaEntalmRequiredMessage_beedaNumero2}"/>
+                        <p:outputLabel value="#{bundle.CreateBeedaEntalmLabel_beedaFecha}" for="beedaFecha" />
+                        <p:calendar id="beedaFecha" pattern="MM/dd/yyyy" value="#{beedaEntalmController.selected.beedaFecha}" title="#{bundle.EditBeedaEntalmTitle_beedaFecha}" required="true" requiredMessage="#{bundle.EditBeedaEntalmRequiredMessage_beedaFecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateBeedaEntalmLabel_beedaNumerofactura}" for="beedaNumerofactura" />
+                        <p:inputText id="beedaNumerofactura" value="#{beedaEntalmController.selected.beedaNumerofactura}" title="#{bundle.CreateBeedaEntalmTitle_beedaNumerofactura}" required="true" requiredMessage="#{bundle.CreateBeedaEntalmRequiredMessage_beedaNumerofactura}"/>
+                        <p:outputLabel value="#{bundle.CreateBeedaEntalmLabel_beedaTotalbienes}" for="beedaTotalbienes" />
+                        <p:inputText id="beedaTotalbienes" value="#{beedaEntalmController.selected.beedaTotalbienes}" title="#{bundle.CreateBeedaEntalmTitle_beedaTotalbienes}" required="true" requiredMessage="#{bundle.CreateBeedaEntalmRequiredMessage_beedaTotalbienes}"/>
+                        <p:outputLabel value="#{bundle.CreateBeedaEntalmLabel_beedaValortotal}" for="beedaValortotal" />
+                        <p:inputText id="beedaValortotal" value="#{beedaEntalmController.selected.beedaValortotal}" title="#{bundle.CreateBeedaEntalmTitle_beedaValortotal}" required="true" requiredMessage="#{bundle.CreateBeedaEntalmRequiredMessage_beedaValortotal}"/>
+                        <p:outputLabel value="#{bundle.CreateBeedaEntalmLabel_beprvCodigo2}" for="beprvCodigo2" />
+                        <p:selectOneMenu id="beprvCodigo2" value="#{beedaEntalmController.selected.beprvCodigo2}" required="true" requiredMessage="#{bundle.EditBeedaEntalmRequiredMessage_beprvCodigo2}">
+                            <f:selectItems value="#{beprvProvController.itemsAvailableSelectOne}"
+                                           var="beprvCodigo2Item"
+                                           itemValue="#{beprvCodigo2Item}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{beedaEntalmController.create}" value="#{bundle.Save}" update="display,:BeedaEntalmListForm:datalist,:growl" oncomplete="handleSubmit(args,'BeedaEntalmCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BeedaEntalmCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

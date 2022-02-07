@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="XeperPerfiViewDlg" widgetVar="XeperPerfiViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewXeperPerfiTitle}">
+            <h:form id="XeperPerfiViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{xeperPerfiController.selected != null}">
+                        <h:outputText value="#{bundle.ViewXeperPerfiLabel_xeperCodigo}"/>
+                        <h:outputText value="#{xeperPerfiController.selected.xeperCodigo}" title="#{bundle.ViewXeperPerfiTitle_xeperCodigo}"/>
+                        <h:outputText value="#{bundle.ViewXeperPerfiLabel_xeperDescri}"/>
+                        <h:outputText value="#{xeperPerfiController.selected.xeperDescri}" title="#{bundle.ViewXeperPerfiTitle_xeperDescri}"/>
+                        <h:outputText value="#{bundle.ViewXeperPerfiLabel_xeperObser}"/>
+                        <h:outputText value="#{xeperPerfiController.selected.xeperObser}" title="#{bundle.ViewXeperPerfiTitle_xeperObser}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="XeperPerfiViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BeinvInvenCreateDlg" widgetVar="BeinvInvenCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBeinvInvenTitle}">
+            <h:form id="BeinvInvenCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{beinvInvenController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBeinvInvenLabel_beinvCodigo}" for="beinvCodigo" />
+                        <p:inputText id="beinvCodigo" value="#{beinvInvenController.selected.beinvCodigo}" title="#{bundle.CreateBeinvInvenTitle_beinvCodigo}" required="true" requiredMessage="#{bundle.CreateBeinvInvenRequiredMessage_beinvCodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateBeinvInvenLabel_beinvDescri}" for="beinvDescri" />
+                        <p:inputText id="beinvDescri" value="#{beinvInvenController.selected.beinvDescri}" title="#{bundle.CreateBeinvInvenTitle_beinvDescri}" required="true" requiredMessage="#{bundle.CreateBeinvInvenRequiredMessage_beinvDescri}"/>
+                        <p:outputLabel value="#{bundle.CreateBeinvInvenLabel_bealmCodigo}" for="bealmCodigo" />
+                        <p:selectOneMenu id="bealmCodigo" value="#{beinvInvenController.selected.bealmCodigo}" required="true" requiredMessage="#{bundle.EditBeinvInvenRequiredMessage_bealmCodigo}">
+                            <f:selectItems value="#{bealmAlmacnController.itemsAvailableSelectOne}"
+                                           var="bealmCodigoItem"
+                                           itemValue="#{bealmCodigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{beinvInvenController.create}" value="#{bundle.Save}" update="display,:BeinvInvenListForm:datalist,:growl" oncomplete="handleSubmit(args,'BeinvInvenCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BeinvInvenCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BealmAlmacnEditDlg" widgetVar="BealmAlmacnEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditBealmAlmacnTitle}">
+            <h:form id="BealmAlmacnEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{bealmAlmacnController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditBealmAlmacnLabel_bealmCodigo}" for="bealmCodigo" />
+                        <p:inputText id="bealmCodigo" value="#{bealmAlmacnController.selected.bealmCodigo}" title="#{bundle.EditBealmAlmacnTitle_bealmCodigo}" required="true" requiredMessage="#{bundle.EditBealmAlmacnRequiredMessage_bealmCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditBealmAlmacnLabel_bealmNombre}" for="bealmNombre" />
+                        <p:inputText id="bealmNombre" value="#{bealmAlmacnController.selected.bealmNombre}" title="#{bundle.EditBealmAlmacnTitle_bealmNombre}" required="true" requiredMessage="#{bundle.EditBealmAlmacnRequiredMessage_bealmNombre}"/>
+                        <p:outputLabel value="#{bundle.EditBealmAlmacnLabel_bealmDescri}" for="bealmDescri" />
+                        <p:inputText id="bealmDescri" value="#{bealmAlmacnController.selected.bealmDescri}" title="#{bundle.EditBealmAlmacnTitle_bealmDescri}" required="true" requiredMessage="#{bundle.EditBealmAlmacnRequiredMessage_bealmDescri}"/>
+                        <p:outputLabel value="#{bundle.EditBealmAlmacnLabel_peparParro}" for="peparParro" />
+                        <p:selectOneMenu id="peparParro" value="#{bealmAlmacnController.selected.peparParro}" required="true" requiredMessage="#{bundle.EditBealmAlmacnRequiredMessage_peparParro}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{peparParroController.itemsAvailableSelectOne}"
+                                           var="peparParroItem"
+                                           itemValue="#{peparParroItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{bealmAlmacnController.update}" value="#{bundle.Save}" update="display,:BealmAlmacnListForm:datalist,:growl" oncomplete="handleSubmit(args, 'BealmAlmacnEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BealmAlmacnEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

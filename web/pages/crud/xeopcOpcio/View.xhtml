@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="XeopcOpcioViewDlg" widgetVar="XeopcOpcioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewXeopcOpcioTitle}">
+            <h:form id="XeopcOpcioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{xeopcOpcioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewXeopcOpcioLabel_xeopcCodigo}"/>
+                        <h:outputText value="#{xeopcOpcioController.selected.xeopcCodigo}" title="#{bundle.ViewXeopcOpcioTitle_xeopcCodigo}"/>
+                        <h:outputText value="#{bundle.ViewXeopcOpcioLabel_xeopcDescri}"/>
+                        <h:outputText value="#{xeopcOpcioController.selected.xeopcDescri}" title="#{bundle.ViewXeopcOpcioTitle_xeopcDescri}"/>
+                        <h:outputText value="#{bundle.ViewXeopcOpcioLabel_xesisCodigo}"/>
+                        <h:outputText value="#{xeopcOpcioController.selected.xesisCodigo}" title="#{bundle.ViewXeopcOpcioTitle_xesisCodigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="XeopcOpcioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

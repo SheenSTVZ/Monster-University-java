@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FecsoCabsolEditDlg" widgetVar="FecsoCabsolEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFecsoCabsolTitle}">
+            <h:form id="FecsoCabsolEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fecsoCabsolController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFecsoCabsolLabel_fecsoNumerosoli}" for="fecsoNumerosoli" />
+                        <p:inputText id="fecsoNumerosoli" value="#{fecsoCabsolController.selected.fecsoNumerosoli}" title="#{bundle.EditFecsoCabsolTitle_fecsoNumerosoli}" required="true" requiredMessage="#{bundle.EditFecsoCabsolRequiredMessage_fecsoNumerosoli}"/>
+                        <p:outputLabel value="#{bundle.EditFecsoCabsolLabel_fecsoFecha}" for="fecsoFecha" />
+                        <p:calendar id="fecsoFecha" pattern="MM/dd/yyyy" value="#{fecsoCabsolController.selected.fecsoFecha}" title="#{bundle.EditFecsoCabsolTitle_fecsoFecha}" required="true" requiredMessage="#{bundle.EditFecsoCabsolRequiredMessage_fecsoFecha}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFecsoCabsolLabel_fecsoEstado}" for="fecsoEstado" />
+                        <p:selectBooleanCheckbox id="fecsoEstado" value="#{fecsoCabsolController.selected.fecsoEstado}" required="true" requiredMessage="#{bundle.EditFecsoCabsolRequiredMessage_fecsoEstado}"/>
+                        <p:outputLabel value="#{bundle.EditFecsoCabsolLabel_fedsoDetsol}" for="fedsoDetsol" />
+                        <p:selectOneMenu id="fedsoDetsol" value="#{fecsoCabsolController.selected.fedsoDetsol}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{fedsoDetsolController.itemsAvailableSelectOne}"
+                                           var="fedsoDetsolItem"
+                                           itemValue="#{fedsoDetsolItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditFecsoCabsolLabel_feempCodigo}" for="feempCodigo" />
+                        <p:selectOneMenu id="feempCodigo" value="#{fecsoCabsolController.selected.feempCodigo}" required="true" requiredMessage="#{bundle.EditFecsoCabsolRequiredMessage_feempCodigo}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{feempEmpleController.itemsAvailableSelectOne}"
+                                           var="feempCodigoItem"
+                                           itemValue="#{feempCodigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fecsoCabsolController.update}" value="#{bundle.Save}" update="display,:FecsoCabsolListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FecsoCabsolEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FecsoCabsolEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

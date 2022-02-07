@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="XesisSisteEditDlg" widgetVar="XesisSisteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditXesisSisteTitle}">
+            <h:form id="XesisSisteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{xesisSisteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditXesisSisteLabel_xesisCodigo}" for="xesisCodigo" />
+                        <p:inputText id="xesisCodigo" value="#{xesisSisteController.selected.xesisCodigo}" title="#{bundle.EditXesisSisteTitle_xesisCodigo}" required="true" requiredMessage="#{bundle.EditXesisSisteRequiredMessage_xesisCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditXesisSisteLabel_xesisDescri}" for="xesisDescri" />
+                        <p:inputText id="xesisDescri" value="#{xesisSisteController.selected.xesisDescri}" title="#{bundle.EditXesisSisteTitle_xesisDescri}" required="true" requiredMessage="#{bundle.EditXesisSisteRequiredMessage_xesisDescri}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{xesisSisteController.update}" value="#{bundle.Save}" update="display,:XesisSisteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'XesisSisteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="XesisSisteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

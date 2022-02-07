@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BeartArticuCreateDlg" widgetVar="BeartArticuCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBeartArticuTitle}">
+            <h:form id="BeartArticuCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{beartArticuController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBeartArticuLabel_feartCodigo}" for="feartCodigo" />
+                        <p:inputText id="feartCodigo" value="#{beartArticuController.selected.feartCodigo}" title="#{bundle.CreateBeartArticuTitle_feartCodigo}" required="true" requiredMessage="#{bundle.CreateBeartArticuRequiredMessage_feartCodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateBeartArticuLabel_feartDescri}" for="feartDescri" />
+                        <p:inputText id="feartDescri" value="#{beartArticuController.selected.feartDescri}" title="#{bundle.CreateBeartArticuTitle_feartDescri}" required="true" requiredMessage="#{bundle.CreateBeartArticuRequiredMessage_feartDescri}"/>
+                        <p:outputLabel value="#{bundle.CreateBeartArticuLabel_feartStock}" for="feartStock" />
+                        <p:inputText id="feartStock" value="#{beartArticuController.selected.feartStock}" title="#{bundle.CreateBeartArticuTitle_feartStock}" required="true" requiredMessage="#{bundle.CreateBeartArticuRequiredMessage_feartStock}"/>
+                        <p:outputLabel value="#{bundle.CreateBeartArticuLabel_feartPrecom}" for="feartPrecom" />
+                        <p:inputText id="feartPrecom" value="#{beartArticuController.selected.feartPrecom}" title="#{bundle.CreateBeartArticuTitle_feartPrecom}" required="true" requiredMessage="#{bundle.CreateBeartArticuRequiredMessage_feartPrecom}"/>
+                        <p:outputLabel value="#{bundle.CreateBeartArticuLabel_feartObser}" for="feartObser" />
+                        <p:inputTextarea rows="4" cols="30" id="feartObser" value="#{beartArticuController.selected.feartObser}" title="#{bundle.CreateBeartArticuTitle_feartObser}" />
+                        <p:outputLabel value="#{bundle.CreateBeartArticuLabel_beinvCodigo}" for="beinvCodigo" />
+                        <p:selectOneMenu id="beinvCodigo" value="#{beartArticuController.selected.beinvCodigo}" >
+                            <f:selectItems value="#{beinvInvenController.itemsAvailableSelectOne}"
+                                           var="beinvCodigoItem"
+                                           itemValue="#{beinvCodigoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateBeartArticuLabel_beedaNumero2}" for="beedaNumero2" />
+                        <p:selectOneMenu id="beedaNumero2" value="#{beartArticuController.selected.beedaNumero2}" required="true" requiredMessage="#{bundle.EditBeartArticuRequiredMessage_beedaNumero2}">
+                            <f:selectItems value="#{beedaEntalmController.itemsAvailableSelectOne}"
+                                           var="beedaNumero2Item"
+                                           itemValue="#{beedaNumero2Item}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{beartArticuController.create}" value="#{bundle.Save}" update="display,:BeartArticuListForm:datalist,:growl" oncomplete="handleSubmit(args,'BeartArticuCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BeartArticuCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

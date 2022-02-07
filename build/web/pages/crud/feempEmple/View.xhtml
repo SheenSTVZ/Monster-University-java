@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FeempEmpleViewDlg" widgetVar="FeempEmpleViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFeempEmpleTitle}">
+            <h:form id="FeempEmpleViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{feempEmpleController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempCodigo}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempCodigo}" title="#{bundle.ViewFeempEmpleTitle_feempCodigo}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempApelli}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempApelli}" title="#{bundle.ViewFeempEmpleTitle_feempApelli}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempNombre}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempNombre}" title="#{bundle.ViewFeempEmpleTitle_feempNombre}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempFecnac}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempFecnac}" title="#{bundle.ViewFeempEmpleTitle_feempFecnac}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempFecsal}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempFecsal}" title="#{bundle.ViewFeempEmpleTitle_feempFecsal}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempDirec}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempDirec}" title="#{bundle.ViewFeempEmpleTitle_feempDirec}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempTelef}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempTelef}" title="#{bundle.ViewFeempEmpleTitle_feempTelef}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempEmail}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempEmail}" title="#{bundle.ViewFeempEmpleTitle_feempEmail}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempCedula}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempCedula}" title="#{bundle.ViewFeempEmpleTitle_feempCedula}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempFoto}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempFoto}" title="#{bundle.ViewFeempEmpleTitle_feempFoto}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempCarfam}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempCarfam}" title="#{bundle.ViewFeempEmpleTitle_feempCarfam}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempPasapo}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempPasapo}" title="#{bundle.ViewFeempEmpleTitle_feempPasapo}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_feempDiscapa}"/>
+                        <h:outputText value="#{feempEmpleController.selected.feempDiscapa}" title="#{bundle.ViewFeempEmpleTitle_feempDiscapa}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_bealmCodigo}"/>
+                        <h:outputText value="#{feempEmpleController.selected.bealmCodigo}" title="#{bundle.ViewFeempEmpleTitle_bealmCodigo}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_fecdcCodigo}"/>
+                        <h:outputText value="#{feempEmpleController.selected.fecdcCodigo}" title="#{bundle.ViewFeempEmpleTitle_fecdcCodigo}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_pecarCargo}"/>
+                        <h:outputText value="#{feempEmpleController.selected.pecarCargo}" title="#{bundle.ViewFeempEmpleTitle_pecarCargo}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_peescCodigo}"/>
+                        <h:outputText value="#{feempEmpleController.selected.peescCodigo}" title="#{bundle.ViewFeempEmpleTitle_peescCodigo}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_pesexCodigo}"/>
+                        <h:outputText value="#{feempEmpleController.selected.pesexCodigo}" title="#{bundle.ViewFeempEmpleTitle_pesexCodigo}"/>
+                        <h:outputText value="#{bundle.ViewFeempEmpleLabel_peparParro}"/>
+                        <h:outputText value="#{feempEmpleController.selected.peparParro}" title="#{bundle.ViewFeempEmpleTitle_peparParro}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FeempEmpleViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FecdcCdcostCreateDlg" widgetVar="FecdcCdcostCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFecdcCdcostTitle}">
+            <h:form id="FecdcCdcostCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fecdcCdcostController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFecdcCdcostLabel_fecdcCodigo}" for="fecdcCodigo" />
+                        <p:inputText id="fecdcCodigo" value="#{fecdcCdcostController.selected.fecdcCodigo}" title="#{bundle.CreateFecdcCdcostTitle_fecdcCodigo}" required="true" requiredMessage="#{bundle.CreateFecdcCdcostRequiredMessage_fecdcCodigo}"/>
+                        <p:outputLabel value="#{bundle.CreateFecdcCdcostLabel_fecdcNombre}" for="fecdcNombre" />
+                        <p:inputText id="fecdcNombre" value="#{fecdcCdcostController.selected.fecdcNombre}" title="#{bundle.CreateFecdcCdcostTitle_fecdcNombre}" required="true" requiredMessage="#{bundle.CreateFecdcCdcostRequiredMessage_fecdcNombre}"/>
+                        <p:outputLabel value="#{bundle.CreateFecdcCdcostLabel_fecdcDescripcion}" for="fecdcDescripcion" />
+                        <p:inputText id="fecdcDescripcion" value="#{fecdcCdcostController.selected.fecdcDescripcion}" title="#{bundle.CreateFecdcCdcostTitle_fecdcDescripcion}" required="true" requiredMessage="#{bundle.CreateFecdcCdcostRequiredMessage_fecdcDescripcion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fecdcCdcostController.create}" value="#{bundle.Save}" update="display,:FecdcCdcostListForm:datalist,:growl" oncomplete="handleSubmit(args,'FecdcCdcostCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FecdcCdcostCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

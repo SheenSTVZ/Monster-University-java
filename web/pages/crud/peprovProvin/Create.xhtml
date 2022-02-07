@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PeprovProvinCreateDlg" widgetVar="PeprovProvinCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePeprovProvinTitle}">
+            <h:form id="PeprovProvinCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{peprovProvinController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePeprovProvinLabel_peprovProvinPK_peprovCodigo}" for="peprovProvinPK_peprovCodigo" />
+                        <p:inputText id="peprovProvinPK_peprovCodigo" value="#{peprovProvinController.selected.peprovProvinPK.peprovCodigo}" title="#{bundle.CreatePeprovProvinTitle_peprovProvinPK_peprovCodigo}" required="true" requiredMessage="#{bundle.CreatePeprovProvinRequiredMessage_peprovProvinPK_peprovCodigo}"/>
+                        <p:outputLabel value="#{bundle.CreatePeprovProvinLabel_peprovDescri}" for="peprovDescri" />
+                        <p:inputText id="peprovDescri" value="#{peprovProvinController.selected.peprovDescri}" title="#{bundle.CreatePeprovProvinTitle_peprovDescri}" required="true" requiredMessage="#{bundle.CreatePeprovProvinRequiredMessage_peprovDescri}"/>
+                        <p:outputLabel value="#{bundle.CreatePeprovProvinLabel_pepaisPais}" for="pepaisPais" />
+                        <p:selectOneMenu id="pepaisPais" value="#{peprovProvinController.selected.pepaisPais}" required="true" requiredMessage="#{bundle.EditPeprovProvinRequiredMessage_pepaisPais}">
+                            <f:selectItems value="#{pepaisPaisController.itemsAvailableSelectOne}"
+                                           var="pepaisPaisItem"
+                                           itemValue="#{pepaisPaisItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{peprovProvinController.create}" value="#{bundle.Save}" update="display,:PeprovProvinListForm:datalist,:growl" oncomplete="handleSubmit(args,'PeprovProvinCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PeprovProvinCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BeedaEntalmViewDlg" widgetVar="BeedaEntalmViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBeedaEntalmTitle}">
+            <h:form id="BeedaEntalmViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{beedaEntalmController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBeedaEntalmLabel_beedaNumero2}"/>
+                        <h:outputText value="#{beedaEntalmController.selected.beedaNumero2}" title="#{bundle.ViewBeedaEntalmTitle_beedaNumero2}"/>
+                        <h:outputText value="#{bundle.ViewBeedaEntalmLabel_beedaFecha}"/>
+                        <h:outputText value="#{beedaEntalmController.selected.beedaFecha}" title="#{bundle.ViewBeedaEntalmTitle_beedaFecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewBeedaEntalmLabel_beedaNumerofactura}"/>
+                        <h:outputText value="#{beedaEntalmController.selected.beedaNumerofactura}" title="#{bundle.ViewBeedaEntalmTitle_beedaNumerofactura}"/>
+                        <h:outputText value="#{bundle.ViewBeedaEntalmLabel_beedaTotalbienes}"/>
+                        <h:outputText value="#{beedaEntalmController.selected.beedaTotalbienes}" title="#{bundle.ViewBeedaEntalmTitle_beedaTotalbienes}"/>
+                        <h:outputText value="#{bundle.ViewBeedaEntalmLabel_beedaValortotal}"/>
+                        <h:outputText value="#{beedaEntalmController.selected.beedaValortotal}" title="#{bundle.ViewBeedaEntalmTitle_beedaValortotal}"/>
+                        <h:outputText value="#{bundle.ViewBeedaEntalmLabel_beprvCodigo2}"/>
+                        <h:outputText value="#{beedaEntalmController.selected.beprvCodigo2}" title="#{bundle.ViewBeedaEntalmTitle_beprvCodigo2}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BeedaEntalmViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

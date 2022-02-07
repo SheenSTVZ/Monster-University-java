@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PedepDeparEditDlg" widgetVar="PedepDeparEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPedepDeparTitle}">
+            <h:form id="PedepDeparEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pedepDeparController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPedepDeparLabel_pedepCodigo}" for="pedepCodigo" />
+                        <p:inputText id="pedepCodigo" value="#{pedepDeparController.selected.pedepCodigo}" title="#{bundle.EditPedepDeparTitle_pedepCodigo}" required="true" requiredMessage="#{bundle.EditPedepDeparRequiredMessage_pedepCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditPedepDeparLabel_pedepDescri}" for="pedepDescri" />
+                        <p:inputText id="pedepDescri" value="#{pedepDeparController.selected.pedepDescri}" title="#{bundle.EditPedepDeparTitle_pedepDescri}" required="true" requiredMessage="#{bundle.EditPedepDeparRequiredMessage_pedepDescri}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pedepDeparController.update}" value="#{bundle.Save}" update="display,:PedepDeparListForm:datalist,:growl" oncomplete="handleSubmit(args, 'PedepDeparEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PedepDeparEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

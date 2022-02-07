@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PedepDeparViewDlg" widgetVar="PedepDeparViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPedepDeparTitle}">
+            <h:form id="PedepDeparViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pedepDeparController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPedepDeparLabel_pedepCodigo}"/>
+                        <h:outputText value="#{pedepDeparController.selected.pedepCodigo}" title="#{bundle.ViewPedepDeparTitle_pedepCodigo}"/>
+                        <h:outputText value="#{bundle.ViewPedepDeparLabel_pedepDescri}"/>
+                        <h:outputText value="#{pedepDeparController.selected.pedepDescri}" title="#{bundle.ViewPedepDeparTitle_pedepDescri}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PedepDeparViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

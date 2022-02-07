@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FecsoCabsolViewDlg" widgetVar="FecsoCabsolViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFecsoCabsolTitle}">
+            <h:form id="FecsoCabsolViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fecsoCabsolController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFecsoCabsolLabel_fecsoNumerosoli}"/>
+                        <h:outputText value="#{fecsoCabsolController.selected.fecsoNumerosoli}" title="#{bundle.ViewFecsoCabsolTitle_fecsoNumerosoli}"/>
+                        <h:outputText value="#{bundle.ViewFecsoCabsolLabel_fecsoFecha}"/>
+                        <h:outputText value="#{fecsoCabsolController.selected.fecsoFecha}" title="#{bundle.ViewFecsoCabsolTitle_fecsoFecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFecsoCabsolLabel_fecsoEstado}"/>
+                        <p:selectBooleanCheckbox value="#{fecsoCabsolController.selected.fecsoEstado}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewFecsoCabsolLabel_fedsoDetsol}"/>
+                        <h:outputText value="#{fecsoCabsolController.selected.fedsoDetsol}" title="#{bundle.ViewFecsoCabsolTitle_fedsoDetsol}"/>
+                        <h:outputText value="#{bundle.ViewFecsoCabsolLabel_feempCodigo}"/>
+                        <h:outputText value="#{fecsoCabsolController.selected.feempCodigo}" title="#{bundle.ViewFecsoCabsolTitle_feempCodigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FecsoCabsolViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

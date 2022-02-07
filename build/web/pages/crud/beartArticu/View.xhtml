@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BeartArticuViewDlg" widgetVar="BeartArticuViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewBeartArticuTitle}">
+            <h:form id="BeartArticuViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{beartArticuController.selected != null}">
+                        <h:outputText value="#{bundle.ViewBeartArticuLabel_feartCodigo}"/>
+                        <h:outputText value="#{beartArticuController.selected.feartCodigo}" title="#{bundle.ViewBeartArticuTitle_feartCodigo}"/>
+                        <h:outputText value="#{bundle.ViewBeartArticuLabel_feartDescri}"/>
+                        <h:outputText value="#{beartArticuController.selected.feartDescri}" title="#{bundle.ViewBeartArticuTitle_feartDescri}"/>
+                        <h:outputText value="#{bundle.ViewBeartArticuLabel_feartStock}"/>
+                        <h:outputText value="#{beartArticuController.selected.feartStock}" title="#{bundle.ViewBeartArticuTitle_feartStock}"/>
+                        <h:outputText value="#{bundle.ViewBeartArticuLabel_feartPrecom}"/>
+                        <h:outputText value="#{beartArticuController.selected.feartPrecom}" title="#{bundle.ViewBeartArticuTitle_feartPrecom}"/>
+                        <h:outputText value="#{bundle.ViewBeartArticuLabel_feartObser}"/>
+                        <h:outputText value="#{beartArticuController.selected.feartObser}" title="#{bundle.ViewBeartArticuTitle_feartObser}"/>
+                        <h:outputText value="#{bundle.ViewBeartArticuLabel_beinvCodigo}"/>
+                        <h:outputText value="#{beartArticuController.selected.beinvCodigo}" title="#{bundle.ViewBeartArticuTitle_beinvCodigo}"/>
+                        <h:outputText value="#{bundle.ViewBeartArticuLabel_beedaNumero2}"/>
+                        <h:outputText value="#{beartArticuController.selected.beedaNumero2}" title="#{bundle.ViewBeartArticuTitle_beedaNumero2}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="BeartArticuViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

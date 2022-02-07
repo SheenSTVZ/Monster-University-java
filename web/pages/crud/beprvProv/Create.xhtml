@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="BeprvProvCreateDlg" widgetVar="BeprvProvCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateBeprvProvTitle}">
+            <h:form id="BeprvProvCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{beprvProvController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateBeprvProvLabel_beprvCodigo2}" for="beprvCodigo2" />
+                        <p:inputText id="beprvCodigo2" value="#{beprvProvController.selected.beprvCodigo2}" title="#{bundle.CreateBeprvProvTitle_beprvCodigo2}" required="true" requiredMessage="#{bundle.CreateBeprvProvRequiredMessage_beprvCodigo2}"/>
+                        <p:outputLabel value="#{bundle.CreateBeprvProvLabel_beprvRuc}" for="beprvRuc" />
+                        <p:inputText id="beprvRuc" value="#{beprvProvController.selected.beprvRuc}" title="#{bundle.CreateBeprvProvTitle_beprvRuc}" required="true" requiredMessage="#{bundle.CreateBeprvProvRequiredMessage_beprvRuc}"/>
+                        <p:outputLabel value="#{bundle.CreateBeprvProvLabel_beprvRazsoc}" for="beprvRazsoc" />
+                        <p:inputText id="beprvRazsoc" value="#{beprvProvController.selected.beprvRazsoc}" title="#{bundle.CreateBeprvProvTitle_beprvRazsoc}" required="true" requiredMessage="#{bundle.CreateBeprvProvRequiredMessage_beprvRazsoc}"/>
+                        <p:outputLabel value="#{bundle.CreateBeprvProvLabel_beprvDirec}" for="beprvDirec" />
+                        <p:inputText id="beprvDirec" value="#{beprvProvController.selected.beprvDirec}" title="#{bundle.CreateBeprvProvTitle_beprvDirec}" required="true" requiredMessage="#{bundle.CreateBeprvProvRequiredMessage_beprvDirec}"/>
+                        <p:outputLabel value="#{bundle.CreateBeprvProvLabel_beprvTelef}" for="beprvTelef" />
+                        <p:inputText id="beprvTelef" value="#{beprvProvController.selected.beprvTelef}" title="#{bundle.CreateBeprvProvTitle_beprvTelef}" required="true" requiredMessage="#{bundle.CreateBeprvProvRequiredMessage_beprvTelef}"/>
+                        <p:outputLabel value="#{bundle.CreateBeprvProvLabel_beprvObser}" for="beprvObser" />
+                        <p:inputTextarea rows="4" cols="30" id="beprvObser" value="#{beprvProvController.selected.beprvObser}" title="#{bundle.CreateBeprvProvTitle_beprvObser}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{beprvProvController.create}" value="#{bundle.Save}" update="display,:BeprvProvListForm:datalist,:growl" oncomplete="handleSubmit(args,'BeprvProvCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="BeprvProvCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

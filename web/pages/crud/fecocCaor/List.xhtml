@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFecocCaorTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="FecocCaorListForm">
+                <p:panel header="#{bundle.ListFecocCaorTitle}">
+                    <p:dataTable id="datalist" value="#{fecocCaorController.items}" var="item"
+                                 selectionMode="single" selection="#{fecocCaorController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.fecocNumero2}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFecocCaorTitle_fecocNumero2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecocNumero2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFecocCaorTitle_fecocFecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecocFecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFecocCaorTitle_fecocTotal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecocTotal}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFecocCaorTitle_fecocIva}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecocIva}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFecocCaorTitle_fecocDescu}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecocDescu}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFecocCaorTitle_fecocTotpag}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecocTotpag}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFecocCaorTitle_feprvCodigo3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.feprvCodigo3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFecocCaorTitle_fedocDeorco}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fedocDeorco}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{fecocCaorController.prepareCreate}" update=":FecocCaorCreateForm" oncomplete="PF('FecocCaorCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":FecocCaorViewForm" oncomplete="PF('FecocCaorViewDialog').show()" disabled="#{empty fecocCaorController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":FecocCaorEditForm" oncomplete="PF('FecocCaorEditDialog').show()" disabled="#{empty fecocCaorController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{fecocCaorController.destroy}" update=":growl,datalist" disabled="#{empty fecocCaorController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

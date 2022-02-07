@@ -1,0 +1,48 @@
+body{
+    /*background-color: #21AFE7;*/
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.hero{
+    background-image: url("img/fondo.png");
+    height: 700px;
+    width: 500px;
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+.login-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    padding: 40px;
+    transform: translate(-50%,-50%);
+    background: #DFF6FF;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.login-box h2{
+    margin: 0 0 30px;
+    padding: 0;
+    color: #000;
+    text-align: center;
+}
+.login-box .user-box{
+    position: relative;
+    font-size: 20px;
+}
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    color: #000;
+    margin-bottom: 30px;
+    /*border: none;*/
+    /*border-bottom: 2px solid #000;*/
+    outline: none;
+    background: transparent;
+}
+.principal{
+    text-align: center;
+}
