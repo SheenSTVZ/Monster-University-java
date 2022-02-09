@@ -11,70 +11,86 @@
         <p:dialog id="FeempEmpleCreateDlg" widgetVar="FeempEmpleCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFeempEmpleTitle}">
             <h:form id="FeempEmpleCreateForm">
                 <h:panelGroup id="display">
+                    
                     <p:panelGrid columns="2" rendered="#{feempEmpleController.selected != null}">
-                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempCodigo}" for="feempCodigo" />
+                        
+                        <p:panelGrid columns="2" >
+                            <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempCodigo}" for="feempCodigo" />
                         <p:inputText id="feempCodigo" value="#{feempEmpleController.selected.feempCodigo}" title="#{bundle.CreateFeempEmpleTitle_feempCodigo}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempCodigo}"/>
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempApelli}" for="feempApelli" />
                         <p:inputText id="feempApelli" value="#{feempEmpleController.selected.feempApelli}" title="#{bundle.CreateFeempEmpleTitle_feempApelli}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempApelli}"/>
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempNombre}" for="feempNombre" />
                         <p:inputText id="feempNombre" value="#{feempEmpleController.selected.feempNombre}" title="#{bundle.CreateFeempEmpleTitle_feempNombre}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempNombre}"/>
-                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempFecnac}" for="feempFecnac" />
-                        <p:calendar id="feempFecnac" pattern="MM/dd/yyyy" value="#{feempEmpleController.selected.feempFecnac}" title="#{bundle.EditFeempEmpleTitle_feempFecnac}" required="true" requiredMessage="#{bundle.EditFeempEmpleRequiredMessage_feempFecnac}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempFecsal}" for="feempFecsal" />
-                        <p:calendar id="feempFecsal" pattern="MM/dd/yyyy" value="#{feempEmpleController.selected.feempFecsal}" title="#{bundle.EditFeempEmpleTitle_feempFecsal}" required="true" requiredMessage="#{bundle.EditFeempEmpleRequiredMessage_feempFecsal}" showOn="button"/>
-                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempDirec}" for="feempDirec" />
-                        <p:inputText id="feempDirec" value="#{feempEmpleController.selected.feempDirec}" title="#{bundle.CreateFeempEmpleTitle_feempDirec}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempDirec}"/>
-                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempTelef}" for="feempTelef" />
-                        <p:inputText id="feempTelef" value="#{feempEmpleController.selected.feempTelef}" title="#{bundle.CreateFeempEmpleTitle_feempTelef}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempTelef}"/>
-                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempEmail}" for="feempEmail" />
-                        <p:inputText id="feempEmail" value="#{feempEmpleController.selected.feempEmail}" title="#{bundle.CreateFeempEmpleTitle_feempEmail}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempEmail}"/>
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempCedula}" for="feempCedula" />
                         <p:inputText id="feempCedula" value="#{feempEmpleController.selected.feempCedula}" title="#{bundle.CreateFeempEmpleTitle_feempCedula}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempCedula}"/>
-                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempFoto}" for="feempFoto" />
-                        <p:inputText id="feempFoto" value="#{feempEmpleController.selected.feempFoto}" title="#{bundle.CreateFeempEmpleTitle_feempFoto}" />
+                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempEmail}" for="feempEmail" />
+                        <p:inputText id="feempEmail" value="#{feempEmpleController.selected.feempEmail}" title="#{bundle.CreateFeempEmpleTitle_feempEmail}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempEmail}"/>
+                        </p:panelGrid>
+                        <p:panelGrid columns="1">
+                            
+                        </p:panelGrid> 
+                    </p:panelGrid>
+                    <p:tabView>
+                        <p:tab title="Datos personales">
+                            <p:panelGrid columns="2" rendered="#{feempEmpleController.selected != null}">
+                                <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempFecnac}" for="feempFecnac" />
+                        <p:calendar id="feempFecnac" pattern="MM/dd/yyyy" value="#{feempEmpleController.selected.feempFecnac}" title="#{bundle.EditFeempEmpleTitle_feempFecnac}" required="true" requiredMessage="#{bundle.EditFeempEmpleRequiredMessage_feempFecnac}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempTelef}" for="feempTelef" />
+                        <p:inputText id="feempTelef" value="#{feempEmpleController.selected.feempTelef}" title="#{bundle.CreateFeempEmpleTitle_feempTelef}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempTelef}"/>
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempCarfam}" for="feempCarfam" />
                         <p:inputText id="feempCarfam" value="#{feempEmpleController.selected.feempCarfam}" title="#{bundle.CreateFeempEmpleTitle_feempCarfam}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempCarfam}"/>
-                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempPasapo}" for="feempPasapo" />
-                        <p:inputText id="feempPasapo" value="#{feempEmpleController.selected.feempPasapo}" title="#{bundle.CreateFeempEmpleTitle_feempPasapo}" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempPasapo}"/>
+                        
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempDiscapa}" for="feempDiscapa" />
                         <p:inputTextarea rows="4" cols="30" id="feempDiscapa" value="#{feempEmpleController.selected.feempDiscapa}" title="#{bundle.CreateFeempEmpleTitle_feempDiscapa}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempDiscapa}"/>
-                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_bealmCodigo}" for="bealmCodigo" />
-                        <p:selectOneMenu id="bealmCodigo" value="#{feempEmpleController.selected.bealmCodigo}" >
-                            <f:selectItems value="#{bealmAlmacnController.itemsAvailableSelectOne}"
-                                           var="bealmCodigoItem"
-                                           itemValue="#{bealmCodigoItem}"/>
-                        </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_fecdcCodigo}" for="fecdcCodigo" />
-                        <p:selectOneMenu id="fecdcCodigo" value="#{feempEmpleController.selected.fecdcCodigo}" required="true" requiredMessage="#{bundle.EditFeempEmpleRequiredMessage_fecdcCodigo}">
-                            <f:selectItems value="#{fecdcCdcostController.itemsAvailableSelectOne}"
-                                           var="fecdcCodigoItem"
-                                           itemValue="#{fecdcCodigoItem}"/>
-                        </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_pecarCargo}" for="pecarCargo" />
                         <p:selectOneMenu id="pecarCargo" value="#{feempEmpleController.selected.pecarCargo}" required="true" requiredMessage="#{bundle.EditFeempEmpleRequiredMessage_pecarCargo}">
                             <f:selectItems value="#{pecarCargoController.itemsAvailableSelectOne}"
-                                           var="pecarCargoItem"
+                                           var="pecarCargoItem" itemLabel="#{pecarCargoItem.pecarDescri}"
                                            itemValue="#{pecarCargoItem}"/>
                         </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_peescCodigo}" for="peescCodigo" />
                         <p:selectOneMenu id="peescCodigo" value="#{feempEmpleController.selected.peescCodigo}" >
                             <f:selectItems value="#{peescEstcivController.itemsAvailableSelectOne}"
-                                           var="peescCodigoItem"
+                                           var="peescCodigoItem" itemLabel="#{peescCodigoItem.peescDescri}"
                                            itemValue="#{peescCodigoItem}"/>
                         </p:selectOneMenu>
+                        
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_pesexCodigo}" for="pesexCodigo" />
                         <p:selectOneMenu id="pesexCodigo" value="#{feempEmpleController.selected.pesexCodigo}" required="true" requiredMessage="#{bundle.EditFeempEmpleRequiredMessage_pesexCodigo}">
                             <f:selectItems value="#{pesexSexoController.itemsAvailableSelectOne}"
-                                           var="pesexCodigoItem"
+                                           var="pesexCodigoItem" itemLabel="#{pesexCodigoItem.pesexDescri}"
                                            itemValue="#{pesexCodigoItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_peparParro}" for="peparParro" />
+                            </p:panelGrid>
+                        </p:tab>
+                        
+                        <p:tab title="Dirección">
+                            <p:panelGrid columns="2" rendered="#{feempEmpleController.selected != null}">
+                                <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_peparParro}" for="peparParro" />
                         <p:selectOneMenu id="peparParro" value="#{feempEmpleController.selected.peparParro}" required="true" requiredMessage="#{bundle.EditFeempEmpleRequiredMessage_peparParro}">
                             <f:selectItems value="#{peparParroController.itemsAvailableSelectOne}"
-                                           var="peparParroItem"
+                                           var="peparParroItem" itemLabel="#{peparParroItem.peparDescri}"
                                            itemValue="#{peparParroItem}"/>
                         </p:selectOneMenu>
-                    </p:panelGrid>
+                                
+                                <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempDirec}" for="feempDirec" />
+                        <p:inputText id="feempDirec" value="#{feempEmpleController.selected.feempDirec}" title="#{bundle.CreateFeempEmpleTitle_feempDirec}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempDirec}"/>
+                            </p:panelGrid>
+                     
+                            
+                        </p:tab>
+                        <p:tab title="Cuenta de usuario">
+                            <p:panelGrid columns="2">
+                                
+                                <p:outputLabel value="#{bundle.CreateXeusuUsuarLabel_xeusuPaswd}" />
+                                <p:outputLabel value="CONTRASEÑA GENERADA DE FORMA ALEATORIA" />
+                                
+                            </p:panelGrid>
+                        </p:tab>
+                        
+                    </p:tabView>
                     <p:commandButton actionListener="#{feempEmpleController.create}" value="#{bundle.Save}" update="display,:FeempEmpleListForm:datalist,:growl" oncomplete="handleSubmit(args,'FeempEmpleCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="FeempEmpleCreateDialog.hide()"/>
                 </h:panelGroup>

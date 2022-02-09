@@ -15,7 +15,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -48,7 +47,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "FeempEmple.findByFeempCedula", query = "SELECT f FROM FeempEmple f WHERE f.feempCedula = :feempCedula")
     , @NamedQuery(name = "FeempEmple.findByFeempFoto", query = "SELECT f FROM FeempEmple f WHERE f.feempFoto = :feempFoto")
     , @NamedQuery(name = "FeempEmple.findByFeempCarfam", query = "SELECT f FROM FeempEmple f WHERE f.feempCarfam = :feempCarfam")
-    , @NamedQuery(name = "FeempEmple.findByFeempPasapo", query = "SELECT f FROM FeempEmple f WHERE f.feempPasapo = :feempPasapo")})
+    , @NamedQuery(name = "FeempEmple.findByFeempPasapo", query = "SELECT f FROM FeempEmple f WHERE f.feempPasapo = :feempPasapo")
+    , @NamedQuery(name = "FeempEmple.findByFeempDiscapa", query = "SELECT f FROM FeempEmple f WHERE f.feempDiscapa = :feempDiscapa")})
 public class FeempEmple implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -73,8 +73,6 @@ public class FeempEmple implements Serializable {
     @Column(name = "FEEMP_FECNAC")
     @Temporal(TemporalType.DATE)
     private Date feempFecnac;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "FEEMP_FECSAL")
     @Temporal(TemporalType.DATE)
     private Date feempFecsal;
@@ -105,9 +103,7 @@ public class FeempEmple implements Serializable {
     @NotNull
     @Column(name = "FEEMP_CARFAM")
     private short feempCarfam;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 15)
+    @Size(max = 15)
     @Column(name = "FEEMP_PASAPO")
     private String feempPasapo;
     @Basic(optional = false)
@@ -122,7 +118,7 @@ public class FeempEmple implements Serializable {
     @ManyToOne
     private BealmAlmacn bealmCodigo;
     @JoinColumn(name = "FECDC_CODIGO", referencedColumnName = "FECDC_CODIGO")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private FecdcCdcost fecdcCodigo;
     @JoinColumns({
         @JoinColumn(name = "PEDEP_CODIGO", referencedColumnName = "PEDEP_CODIGO")
@@ -150,18 +146,16 @@ public class FeempEmple implements Serializable {
         this.feempCodigo = feempCodigo;
     }
 
-    public FeempEmple(String feempCodigo, String feempApelli, String feempNombre, Date feempFecnac, Date feempFecsal, String feempDirec, String feempTelef, String feempEmail, String feempCedula, short feempCarfam, String feempPasapo, int feempDiscapa) {
+    public FeempEmple(String feempCodigo, String feempApelli, String feempNombre, Date feempFecnac, String feempDirec, String feempTelef, String feempEmail, String feempCedula, short feempCarfam, int feempDiscapa) {
         this.feempCodigo = feempCodigo;
         this.feempApelli = feempApelli;
         this.feempNombre = feempNombre;
         this.feempFecnac = feempFecnac;
-        this.feempFecsal = feempFecsal;
         this.feempDirec = feempDirec;
         this.feempTelef = feempTelef;
         this.feempEmail = feempEmail;
         this.feempCedula = feempCedula;
         this.feempCarfam = feempCarfam;
-        this.feempPasapo = feempPasapo;
         this.feempDiscapa = feempDiscapa;
     }
 

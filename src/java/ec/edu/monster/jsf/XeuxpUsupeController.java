@@ -4,6 +4,7 @@ import ec.edu.monster.model.XeuxpUsupe;
 import ec.edu.monster.jsf.util.JsfUtil;
 import ec.edu.monster.jsf.util.JsfUtil.PersistAction;
 import ec.edu.monster.jpaController.XeuxpUsupeFacade;
+import ec.edu.monster.model.XeusuUsuar;
 
 import java.io.Serializable;
 import java.util.List;
@@ -27,6 +28,9 @@ public class XeuxpUsupeController implements Serializable {
     private ec.edu.monster.jpaController.XeuxpUsupeFacade ejbFacade;
     private List<XeuxpUsupe> items = null;
     private XeuxpUsupe selected;
+    private XeusuUsuar codUser = new XeusuUsuar();
+    private XeusuUsuar codUserDel = new XeusuUsuar();
+    private String perfil = "";
 
     public XeuxpUsupeController() {
     }
@@ -34,6 +38,23 @@ public class XeuxpUsupeController implements Serializable {
     public XeuxpUsupe getSelected() {
         return selected;
     }
+
+    public String getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
+    }
+
+    public XeusuUsuar getCodUserDel() {
+        return codUserDel;
+    }
+
+    public void setCodUserDel(XeusuUsuar codUserDel) {
+        this.codUserDel = codUserDel;
+    }
+    
 
     public void setSelected(XeuxpUsupe selected) {
         this.selected = selected;
@@ -175,5 +196,51 @@ public class XeuxpUsupeController implements Serializable {
         }
 
     }
+    
+    public void addAll(List<XeusuUsuar> users) {
+        for (int i = 0; i < users.size(); i++) {
+ 
+            getFacade().insertWithQuery(perfil, users.get(i).getFeempCodigo().getFeempCodigo(), users.get(i).getFeempCodigo().getFeempEmail());
+        }
+ 
+    }
+    
+    public void addOne() {
+        // System.out.println(usuario);
+        getFacade().insertWithQuery(perfil, codUser.getFeempCodigo().getFeempCodigo(), codUser.getFeempCodigo().getFeempEmail());
+    }
+ 
+    public void deleteAll() {
+ 
+        List<XeuxpUsupe> users = getFacade().getUsuarioPerfilP(perfil);
+        for (int i = 0; i < users.size(); i++) {
+ 
+            getFacade().remove(users.get(i));
+        }
+ 
+    }
+ 
+    public void deleteByCodPas() {
+ 
+        getFacade().removeAssignation(codUserDel.getFeempCodigo().getFeempCodigo());
+    }
+ 
+    public List<XeusuUsuar> getUsuarios(String id) {
+//        System.out.println( "usuario" +getFacade().findUsuarios(id).get(0).getXeusuUsuarPK().getXeusuEmail());
+        if ((getFacade().findUsuarios(id).size()>0)) {
+            getFacade().findUsuarios(id).get(0).getFeempCodigo().getFeempEmail();
+        }
+        return getFacade().findUsuarios(id);
+    }
+ 
+    public XeusuUsuar getCodUser() {
+        return codUser;
+    }
+ 
+    public void setCodUser(XeusuUsuar codUser) {
+        this.codUser = codUser;
+    }
+
+
 
 }

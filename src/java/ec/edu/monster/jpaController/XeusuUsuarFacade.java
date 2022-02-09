@@ -32,14 +32,14 @@ public class XeusuUsuarFacade extends AbstractFacade<XeusuUsuar> {
         super(XeusuUsuar.class);
     }
     public List<XeusuUsuar> getUsuariosNotRelated() {
-        return getEntityManager().createNativeQuery("SELECT * FROM xeusu_usuar x WHERE x.PEPER_ID NOT IN (SELECT up.PEPER_ID from xeuxp_usuper up);", XeusuUsuar.class)
+        return getEntityManager().createNativeQuery("SELECT * FROM xeusu_usuar x WHERE x.FEEMP_CODIGO NOT IN (SELECT up.XEUSU_CODIGO from xeuxp_usupe up);", XeusuUsuar.class)
                 .getResultList();
  
     }
  
-    public XeusuUsuar findUsu(int id) {
+    public XeusuUsuar findUsu(String id) {
         try {
-            return (XeusuUsuar) em.createNativeQuery("SELECT * FROM xeusu_usuar WHERE PEPER_ID LIKE " + id + "", XeusuUsuar.class).getSingleResult();
+            return (XeusuUsuar) em.createNativeQuery("SELECT * FROM xeusu_usuar WHERE FEEMP_CODIGO LIKE " + id + "", XeusuUsuar.class).getSingleResult();
         } catch (Exception e) {
             return null;
         }

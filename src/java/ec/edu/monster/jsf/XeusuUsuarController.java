@@ -2,15 +2,18 @@ package ec.edu.monster.jsf;
 
 import ec.edu.monster.controller.passwordController;
 import ec.edu.monster.model.XeusuUsuar;
+import ec.edu.monster.jsf.XeestEstadController;
 import ec.edu.monster.jsf.util.JsfUtil;
 import ec.edu.monster.jsf.util.JsfUtil.PersistAction;
 import ec.edu.monster.jpaController.XeusuUsuarFacade;
 import ec.edu.monster.model.FeempEmple;
+import ec.edu.monster.model.XeestEstad;
 import java.io.IOException;
 
 import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +26,13 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 @Named("xeusuUsuarController")
 @SessionScoped
@@ -38,6 +48,7 @@ public class XeusuUsuarController implements Serializable {
     private String antPassword = null;
     private String repPassword = null;
     private FeempEmple selectedPK;
+    private String claveAleatoria;
 
 
     public XeusuUsuarController() {
@@ -131,6 +142,33 @@ public class XeusuUsuarController implements Serializable {
         System.out.println("----------------------------------------------------------------------------------------------");
         return cambio;
     }
+    
+//    public void enviarConGmail(String destinatario, String asunto, String cuerpo) throws AddressException, MessagingException{
+//        String remitente = "soportemonsteruniversity1";
+//        Properties props = System.getProperties();
+//        props.put("mail.smtp.host", "smtp.gmail.com");
+//        props.put("mail.smtp.user", remitente);
+//        props.put("mail.smtp.clave", "Empanada123");
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.starttls.enable", "true");
+//        props.put("mail.smtp.port", "587");
+//        
+//        Session session = Session.getDefaultInstance(props);
+//        MimeMessage message = new MimeMessage(session);
+//        try{
+//            message.setFrom(new InternetAddress(remitente));
+//            InternetAddress[] addresses = InternetAddress.parse(destinatario);
+//            message.addRecipients(Message.RecipientType.TO, addresses);
+//            message.setSubject(asunto);
+//            message.setText(cuerpo);
+//            Transport transport = session.getTransport("smtp");
+//            transport.connect("smtp.gmail.com", remitente, "Empanada123");
+//            transport.sendMessage(message, message.getAllRecipients());
+//            transport.close();
+//        }catch (MessagingException me){
+//            me.printStackTrace();
+//        }
+//    }
 
     public void cambiarPass() {
         try {
@@ -142,6 +180,10 @@ public class XeusuUsuarController implements Serializable {
                 // RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos inválidos", "Contraseñas no coinciden"));
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos inválidos", "Contraseñas no coinciden"));
             } else {
+                XeestEstad estado = new XeestEstad();
+                estado.setXeestCodigo("1");
+                estado.setXeestDescri("Activo");
+                selected.setXeestCodigo(estado);
                 persist(PersistAction.UPDATE, "SE HA CAMBIADO LA CLAVE");
                 //  RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO, "Datos actualizados", "Sus datos han sido actualizados"));
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datos actualizados", "Sus datos han sido actualizados"));
@@ -157,7 +199,7 @@ public class XeusuUsuarController implements Serializable {
 
     
     public void create() {
-        String claveAleatoria = passwordController.getRandomString(8);
+        claveAleatoria = passwordController.getRandomString(8);
         selected.setXeusuPaswd(passwordController.md5(claveAleatoria));
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("XeusuUsuarCreated"));
         if (!JsfUtil.isValidationFailed()) {
@@ -188,7 +230,10 @@ public class XeusuUsuarController implements Serializable {
         if (selected != null) {
             setEmbeddableKeys();
             try {
-                if (persistAction != PersistAction.DELETE) {
+                if (persistAction != PersistAction.DELETE) {           
+                    if(persistAction == PersistAction.CREATE){
+//                        enviarConGmail(selected.getFeempCodigo().getFeempEmail(), "Contraseña", "Su contraseña de primer acceso es: "+claveAleatoria);
+                    }
                     getFacade().edit(selected);
                 } else {
                     getFacade().remove(selected);
@@ -264,5 +309,12 @@ public class XeusuUsuarController implements Serializable {
         }
 
     }
+    
+    public List<XeusuUsuar> getUsuariosNotRelated() {
+ 
+        System.out.println(getFacade().getUsuariosNotRelated());
+        return getFacade().getUsuariosNotRelated();
+    }
+
 
 }

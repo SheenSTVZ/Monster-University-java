@@ -125,25 +125,25 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFeempEmpleTitle_pecarCargo}"/>
                             </f:facet>
-                            <h:outputText value="#{item.pecarCargo}"/>
+                            <h:outputText value="#{item.pecarCargo.pecarDescri}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFeempEmpleTitle_peescCodigo}"/>
                             </f:facet>
-                            <h:outputText value="#{item.peescCodigo}"/>
+                            <h:outputText value="#{item.peescCodigo.peescDescri}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFeempEmpleTitle_pesexCodigo}"/>
                             </f:facet>
-                            <h:outputText value="#{item.pesexCodigo}"/>
+                            <h:outputText value="#{item.pesexCodigo.pesexDescri}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListFeempEmpleTitle_peparParro}"/>
                             </f:facet>
-                            <h:outputText value="#{item.peparParro}"/>
+                            <h:outputText value="#{item.peparParro.peparDescri}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{feempEmpleController.prepareCreate}" update=":FeempEmpleCreateForm" oncomplete="PF('FeempEmpleCreateDialog').show()"/>

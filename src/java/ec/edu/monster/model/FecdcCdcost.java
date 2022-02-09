@@ -8,7 +8,6 @@ package ec.edu.monster.model;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -52,7 +51,7 @@ public class FecdcCdcost implements Serializable {
     @Size(min = 1, max = 64)
     @Column(name = "FECDC_DESCRIPCION")
     private String fecdcDescripcion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fecdcCodigo")
+    @OneToMany(mappedBy = "fecdcCodigo")
     private Collection<FeempEmple> feempEmpleCollection;
 
     public FecdcCdcost() {

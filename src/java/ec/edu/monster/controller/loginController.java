@@ -80,8 +80,12 @@ public class loginController implements Serializable{
  
             if (x.getXeusuPaswd() != null) {
                 // Logged in - redirect
- 
-                FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
+                System.out.println(x.getXeestCodigo());
+                if(x.getXeestCodigo().getXeestCodigo().equals("0")){
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("pages/CambiarContrasenia.xhtml");
+                }else{
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("home.xhtml");
+                }
  
             } else {
                 System.out.println(x.getXeusuPaswd());

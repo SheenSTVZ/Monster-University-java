@@ -5,7 +5,6 @@
  */
 package ec.edu.monster.model;
 
-import ec.edu.monster.controller.passwordController;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
@@ -42,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "XeusuUsuar.findByXeusuFecmod", query = "SELECT x FROM XeusuUsuar x WHERE x.xeusuFecmod = :xeusuFecmod")
     , @NamedQuery(name = "XeusuUsuar.findByXeusuPiefir", query = "SELECT x FROM XeusuUsuar x WHERE x.xeusuPiefir = :xeusuPiefir")})
 public class XeusuUsuar implements Serializable {
-  
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -60,14 +59,10 @@ public class XeusuUsuar implements Serializable {
     @Column(name = "XEUSU_FECCRE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date xeusuFeccre;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "XEUSU_FECMOD")
     @Temporal(TemporalType.TIMESTAMP)
     private Date xeusuFecmod;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     @Column(name = "XEUSU_PIEFIR")
     private String xeusuPiefir;
     @JoinColumn(name = "FEEMP_CODIGO", referencedColumnName = "FEEMP_CODIGO")
@@ -86,11 +81,10 @@ public class XeusuUsuar implements Serializable {
         this.xeusuCodigo = xeusuCodigo;
     }
 
-    public XeusuUsuar(String xeusuCodigo, String xeusuPaswd, Date xeusuFeccre, Date xeusuFecmod, String xeusuPiefir) {
+    public XeusuUsuar(String xeusuCodigo, String xeusuPaswd, Date xeusuFeccre) {
         this.xeusuCodigo = xeusuCodigo;
+        this.xeusuPaswd = xeusuPaswd;
         this.xeusuFeccre = xeusuFeccre;
-        this.xeusuFecmod = xeusuFecmod;
-        this.xeusuPiefir = xeusuPiefir;
     }
 
     public String getXeusuCodigo() {
