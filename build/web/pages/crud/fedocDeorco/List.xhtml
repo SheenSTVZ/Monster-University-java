@@ -15,7 +15,7 @@
 
         <ui:define name="body">
             <h:form id="FedocDeorcoListForm">
-                <p:panel header="#{bundle.ListFedocDeorcoTitle}">
+                <!--<p:panel header="#{bundle.ListFedocDeorcoTitle}">-->
                     <p:dataTable id="datalist" value="#{fedocDeorcoController.items}" var="item"
                                  selectionMode="single" selection="#{fedocDeorcoController.selected}"
                                  paginator="true"
@@ -64,7 +64,7 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{fedocDeorcoController.destroy}" update=":growl,datalist" disabled="#{empty fedocDeorcoController.selected}"/>
                         </f:facet>
                     </p:dataTable>
-                </p:panel>
+                <!--</p:panel>-->
             </h:form>
 
             <ui:include src="Create.xhtml"/>

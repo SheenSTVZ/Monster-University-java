@@ -15,7 +15,7 @@
 
         <ui:define name="body">
             <h:form id="XesisSisteListForm">
-                <p:panel header="#{bundle.ListXesisSisteTitle}">
+                <!--<p:panel header="#{bundle.ListXesisSisteTitle}">-->
                     <p:dataTable id="datalist" value="#{xesisSisteController.items}" var="item"
                                  selectionMode="single" selection="#{xesisSisteController.selected}"
                                  paginator="true"
@@ -46,7 +46,7 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{xesisSisteController.destroy}" update=":growl,datalist" disabled="#{empty xesisSisteController.selected}"/>
                         </f:facet>
                     </p:dataTable>
-                </p:panel>
+                <!--</p:panel>-->
             </h:form>
 
             <ui:include src="Create.xhtml"/>

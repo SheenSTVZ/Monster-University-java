@@ -70,7 +70,7 @@ public class loginController implements Serializable{
  
     public void doLogin() throws NoSuchAlgorithmException, IOException {
         
-        hash hashPswd = new hash();
+        passwordController hashPswd = new passwordController();
         
         String password = hashPswd.md5(usuario.getXeusuPaswd());
         

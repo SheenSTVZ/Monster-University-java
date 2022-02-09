@@ -15,7 +15,7 @@
 
         <ui:define name="body">
             <h:form id="BesdaSalalmListForm">
-                <p:panel header="#{bundle.ListBesdaSalalmTitle}">
+                <!--<p:panel header="#{bundle.ListBesdaSalalmTitle}">-->
                     <p:dataTable id="datalist" value="#{besdaSalalmController.items}" var="item"
                                  selectionMode="single" selection="#{besdaSalalmController.selected}"
                                  paginator="true"
@@ -74,7 +74,7 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{besdaSalalmController.destroy}" update=":growl,datalist" disabled="#{empty besdaSalalmController.selected}"/>
                         </f:facet>
                     </p:dataTable>
-                </p:panel>
+                <!--</p:panel>-->
             </h:form>
 
             <ui:include src="Create.xhtml"/>

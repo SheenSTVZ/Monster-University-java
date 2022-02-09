@@ -15,7 +15,7 @@
 
         <ui:define name="body">
             <h:form id="PedepDeparListForm">
-                <p:panel header="#{bundle.ListPedepDeparTitle}">
+                <!--<p:panel header="#{bundle.ListPedepDeparTitle}">-->
                     <p:dataTable id="datalist" value="#{pedepDeparController.items}" var="item"
                                  selectionMode="single" selection="#{pedepDeparController.selected}"
                                  paginator="true"
@@ -46,7 +46,7 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{pedepDeparController.destroy}" update=":growl,datalist" disabled="#{empty pedepDeparController.selected}"/>
                         </f:facet>
                     </p:dataTable>
-                </p:panel>
+                <!--</p:panel>-->
             </h:form>
 
             <ui:include src="Create.xhtml"/>

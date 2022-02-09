@@ -9,17 +9,76 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <h:outputStylesheet name="css/default.css"/>
+        <h:outputStylesheet name="css/cssLayout.css"/>
     </h:head>
 
     <h:body>
-        <h1>
-            <ui:insert name="title">Default Title</ui:insert>
-        </h1>
+         <div id="top">
+             <ui:insert name="top">
+                 <div class="icono">
+                 </div>
+                 <h1 class="cabecera">Bienes - MONSTER UNIVERSITY</h1>
+             </ui:insert>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <p:menu>
+                        <p:submenu label="Seguridad">
+                            <p:menuitem value="Usuario" url="/faces/pages/crud/xeusuUsuar/List.xhtml" />
+                            <p:menuitem value="Estado de usuario" url="/faces/pages/crud/xeestEstad/List.xhtml" />
+                            <p:menuitem value="Pefil" url="/faces/pages/crud/xeperPerfi/List.xhtml" />
+                            <p:menuitem value="Opciones de un Perfil" url="/faces/pages/crud/xeoxpOpcpe/List.xhtml" />
+                            <p:menuitem value="Usuario/perfil" url="/faces/pages/crud/xeuxpUsupe/List.xhtml" />
+                            <p:menuitem value="Sistema" url="/faces/pages/crud/xesisSiste/List.xhtml" />
+                            <p:menuitem value="Opciones de Sistema" url="/faces/pages/crud/xeopcOpcio/List.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Bienes">
+                            <p:menuitem value="Artículo" url="/faces/pages/crud/beartArticu/List.xhtml" />
+                            <p:menuitem value="Inventario" url="/faces/pages/crud/beinvInven/List.xhtml" />
+                            <p:menuitem value="Proveedor Bienes" url="/faces/pages/crud/beprvProv/List.xhtml" />
+                            <p:menuitem value="Almacén" url="/faces/pages/crud/bealmAlmacn/List.xhtml" />
+                            <p:menuitem value="Entrada al almacén" url="/faces/pages/crud/beedaEntalm/List.xhtml" />
+                            <p:menuitem value="Salida al almacén" url="/faces/pages/crud/besdaSalalm/List.xhtml" />
+                        </p:submenu>
+                        <p:submenu label="Finanzas">
+                            <p:menuitem value="Empleado" url="/faces/pages/crud/feempEmple/List.xhtml" />
+                            <p:menuitem value="Centro de costos" url="/faces/pages/crud/fecdcCdcost/List.xhtml" />
+                            <p:menuitem value="Artículos de solicitud" url="/faces/pages/crud/feartArticu/List.xhtml" />
+                            <p:menuitem value="Cabecera de Solicitud" url="/faces/pages/crud/fecsoCabsol/List.xhtml" />
+                            <p:menuitem value="Detalles de solicitud" url="/faces/pages/crud/fedsoDetsol/List.xhtml" />
+                            <p:menuitem value="Cabecera de orden de compra" url="/faces/pages/crud/fecocCaor/List.xhtml" />
+                            <p:menuitem value="Detalles de orden de compra" url="/faces/pages/crud/fedocDeorco/List.xhtml" />
+                            <p:menuitem value="Proveedor" url="/faces/pages/crud/feprvProv/List.xhtml" />     
+                        </p:submenu>
+                        <p:submenu label="Personal">
+                            <p:menuitem value="Estado Civil" url="/faces/pages/crud/peescEstciv/List.xhtml" />  
+                            <p:menuitem value="Sexo" url="/faces/pages/crud/pesexSexo/List.xhtml" />         
+                            <p:menuitem value="Cargo de empleado" url="/faces/pages/crud/pecarCargo/List.xhtml" />  
+                            <p:menuitem value="Departamento de empleado" url="/faces/pages/crud/pedepDepar/List.xhtml" />  
+                            <p:menuitem value="País" url="/faces/pages/crud/pepaisPais/List.xhtml" />  
+                            <p:menuitem value="Provincia" url="/faces/pages/crud/peprovProvin/List.xhtml" />
+                            <p:menuitem value="Cantón" url="/faces/pages/crud/pecanCanton/List.xhtml" />     
+                            <p:menuitem value="Parroquia" url="/faces/pages/crud/peparParro/List.xhtml" />
+                        </p:submenu>
+                    </p:menu>             
+                </ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">
+                    <h1>
+                        <ui:insert name="title">Contenido</ui:insert>
+                    </h1>
+
+                    <p>
+                        <ui:insert name="body">Selecciona una opción del menú</ui:insert>
+                    </p>
+                    <p:growl id="growl" life="3000" />
+                            </ui:insert>
+                        </div>
+                    </div>
         
-        <p>
-            <ui:insert name="body">Default Body</ui:insert>
-        </p>
-        <p:growl id="growl" life="3000" />
     </h:body>
 
 </html>

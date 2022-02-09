@@ -1,11 +1,15 @@
 package ec.edu.monster.jsf;
 
+import ec.edu.monster.controller.passwordController;
 import ec.edu.monster.model.XeusuUsuar;
 import ec.edu.monster.jsf.util.JsfUtil;
 import ec.edu.monster.jsf.util.JsfUtil.PersistAction;
 import ec.edu.monster.jpaController.XeusuUsuarFacade;
+import ec.edu.monster.model.FeempEmple;
+import java.io.IOException;
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -14,6 +18,7 @@ import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -27,8 +32,23 @@ public class XeusuUsuarController implements Serializable {
     private ec.edu.monster.jpaController.XeusuUsuarFacade ejbFacade;
     private List<XeusuUsuar> items = null;
     private XeusuUsuar selected;
+    private XeusuUsuar cambio;
+    private String password = null;
+    private String newPassword = null;
+    private String antPassword = null;
+    private String repPassword = null;
+    private FeempEmple selectedPK;
+
 
     public XeusuUsuarController() {
+    }
+
+    public FeempEmple getSelectedPK() {
+        return selectedPK;
+    }
+
+    public void setSelectedPK(FeempEmple selectedPK) {
+        this.selectedPK = selectedPK;
     }
 
     public XeusuUsuar getSelected() {
@@ -39,10 +59,54 @@ public class XeusuUsuarController implements Serializable {
         this.selected = selected;
     }
 
+    public XeusuUsuar getCambio() {
+        return cambio;
+    }
+
+    public void setCambio(XeusuUsuar cambio) {
+        this.cambio = cambio;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public String getAntPassword() {
+        return antPassword;
+    }
+
+    public void setAntPassword(String antPassword) {
+        this.antPassword = antPassword;
+    }
+
+    public String getRepPassword() {
+        return repPassword;
+    }
+
+    public void setRepPassword(String repPassword) {
+        this.repPassword = repPassword;
+    }
+
+    
+    
     protected void setEmbeddableKeys() {
+
     }
 
     protected void initializeEmbeddableKey() {
+        
     }
 
     private XeusuUsuarFacade getFacade() {
@@ -54,8 +118,47 @@ public class XeusuUsuarController implements Serializable {
         initializeEmbeddableKey();
         return selected;
     }
+    
+    public XeusuUsuar obtenerDatosUsu() throws NoSuchAlgorithmException {
 
+        cambio = (XeusuUsuar) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        System.out.println(cambio.getFeempCodigo());
+        cambio.setXeusuPaswd(passwordController.md5(newPassword));// setUsuContrasena(generateHash(newPassword));
+        System.out.println("----------------------------------------------------------------------------------------------");
+        //  System.out.println("--CONT" +usuarioPass.getUsuContIngreso());
+        //  System.out.println("--NOM"+ usuarioPass.getUsuNombre());
+        // System.out.println(usuarioPass.getUsuContrasena() + " -> " + usuarioPass.getUsuNombre() + " -> " + usuarioPass.getUsuContrasenaAntigua0());
+        System.out.println("----------------------------------------------------------------------------------------------");
+        return cambio;
+    }
+
+    public void cambiarPass() {
+        try {
+            selected = obtenerDatosUsu();
+            if (selected.getFeempCodigo().getFeempEmail().equals(newPassword)) {
+                //RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos inválidos", "Usuario y contraseña no pueden ser iguales"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos inválidos", "Usuario y contraseña no pueden ser iguales"));
+            } else if (!newPassword.equals(repPassword)) {
+                // RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos inválidos", "Contraseñas no coinciden"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Datos inválidos", "Contraseñas no coinciden"));
+            } else {
+                persist(PersistAction.UPDATE, "SE HA CAMBIADO LA CLAVE");
+                //  RequestContext.getCurrentInstance().showMessageInDialog(new FacesMessage(FacesMessage.SEVERITY_INFO, "Datos actualizados", "Sus datos han sido actualizados"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Datos actualizados", "Sus datos han sido actualizados"));
+                FacesContext.getCurrentInstance().getExternalContext().redirect("../index.xhtml");
+            }
+
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(XeusuUsuarController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(XeusuUsuarController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
     public void create() {
+        String claveAleatoria = passwordController.getRandomString(8);
+        selected.setXeusuPaswd(passwordController.md5(claveAleatoria));
         persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("XeusuUsuarCreated"));
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.

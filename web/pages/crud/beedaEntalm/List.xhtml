@@ -15,7 +15,7 @@
 
         <ui:define name="body">
             <h:form id="BeedaEntalmListForm">
-                <p:panel header="#{bundle.ListBeedaEntalmTitle}">
+<!--                <p:panel header="#{bundle.ListBeedaEntalmTitle}">-->
                     <p:dataTable id="datalist" value="#{beedaEntalmController.items}" var="item"
                                  selectionMode="single" selection="#{beedaEntalmController.selected}"
                                  paginator="true"
@@ -72,7 +72,7 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{beedaEntalmController.destroy}" update=":growl,datalist" disabled="#{empty beedaEntalmController.selected}"/>
                         </f:facet>
                     </p:dataTable>
-                </p:panel>
+<!--                </p:panel>-->
             </h:form>
 
             <ui:include src="Create.xhtml"/>

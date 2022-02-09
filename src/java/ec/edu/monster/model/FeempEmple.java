@@ -112,9 +112,8 @@ public class FeempEmple implements Serializable {
     private String feempPasapo;
     @Basic(optional = false)
     @NotNull
-    @Lob
     @Column(name = "FEEMP_DISCAPA")
-    private byte[] feempDiscapa;
+    private int feempDiscapa;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "feempCodigo")
     private Collection<XeusuUsuar> xeusuUsuarCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "feempCodigo")
@@ -151,7 +150,7 @@ public class FeempEmple implements Serializable {
         this.feempCodigo = feempCodigo;
     }
 
-    public FeempEmple(String feempCodigo, String feempApelli, String feempNombre, Date feempFecnac, Date feempFecsal, String feempDirec, String feempTelef, String feempEmail, String feempCedula, short feempCarfam, String feempPasapo, byte[] feempDiscapa) {
+    public FeempEmple(String feempCodigo, String feempApelli, String feempNombre, Date feempFecnac, Date feempFecsal, String feempDirec, String feempTelef, String feempEmail, String feempCedula, short feempCarfam, String feempPasapo, int feempDiscapa) {
         this.feempCodigo = feempCodigo;
         this.feempApelli = feempApelli;
         this.feempNombre = feempNombre;
@@ -262,11 +261,11 @@ public class FeempEmple implements Serializable {
         this.feempPasapo = feempPasapo;
     }
 
-    public byte[] getFeempDiscapa() {
+    public int getFeempDiscapa() {
         return feempDiscapa;
     }
 
-    public void setFeempDiscapa(byte[] feempDiscapa) {
+    public void setFeempDiscapa(int feempDiscapa) {
         this.feempDiscapa = feempDiscapa;
     }
 

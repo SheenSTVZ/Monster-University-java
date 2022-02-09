@@ -15,7 +15,7 @@
 
         <ui:define name="body">
             <h:form id="FedsoDetsolListForm">
-                <p:panel header="#{bundle.ListFedsoDetsolTitle}">
+                <!--<p:panel header="#{bundle.ListFedsoDetsolTitle}">-->
                     <p:dataTable id="datalist" value="#{fedsoDetsolController.items}" var="item"
                                  selectionMode="single" selection="#{fedsoDetsolController.selected}"
                                  paginator="true"
@@ -58,7 +58,7 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{fedsoDetsolController.destroy}" update=":growl,datalist" disabled="#{empty fedsoDetsolController.selected}"/>
                         </f:facet>
                     </p:dataTable>
-                </p:panel>
+                <!--</p:panel>-->
             </h:form>
 
             <ui:include src="Create.xhtml"/>

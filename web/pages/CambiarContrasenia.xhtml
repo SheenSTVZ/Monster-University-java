@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body style="width: 95%;margin: auto auto;">
+         <p:panel style="width: 400px;margin: 0 auto; text-align: center;">
+            <img src="../resources/img/fondo.png" alt="IMG" style="margin-left: auto; display: block;" width="30%"/>
+            <h:form>
+                <p:growl id="growl" life="3000"/>
+                <p:panelGrid columns="2" id="pGrid" class="cuadro">
+                    <p:outputLabel value="Correo:" for="correo" />
+                    <p:inputText id="correo" value="#{loginController.usuario.feempCodigo.feempEmail}" required="true" />
+                    <p:outputLabel value="Contraseña Antigua" for="passAn"/>
+                    <p:password required="true" id="passAn" value="#{xeusuUsuarController.antPassword}"/>
+                    <p:outputLabel value="Contraseña Nueva" for="passNu"/>
+                    <p:password required="true" id="passNu" value="#{xeusuUsuarController.newPassword}"/>
+                    <p:outputLabel value="Repetir Contraseña Nueva" for="repPassNu"/>
+                    <p:password required="true" id="repPassNu" value="#{xeusuUsuarController.repPassword}"/>
+                    <p:column />
+                    <p:commandButton actionListener="#{xeusuUsuarController.cambiarPass()}" value="Cambiar contraseña" />
+                </p:panelGrid>
+            </h:form>
+          </p:panel>
+    </h:body>
+</html>
