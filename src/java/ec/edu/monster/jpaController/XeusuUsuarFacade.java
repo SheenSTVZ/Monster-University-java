@@ -32,7 +32,7 @@ public class XeusuUsuarFacade extends AbstractFacade<XeusuUsuar> {
         super(XeusuUsuar.class);
     }
     public List<XeusuUsuar> getUsuariosNotRelated() {
-        return getEntityManager().createNativeQuery("SELECT * FROM xeusu_usuar x WHERE x.FEEMP_CODIGO NOT IN (SELECT up.XEUSU_CODIGO from xeuxp_usupe up);", XeusuUsuar.class)
+        return getEntityManager().createNativeQuery("SELECT * FROM xeusu_usuar x WHERE x.XEUSU_CODIGO NOT IN (SELECT up.XEUSU_CODIGO from xeuxp_usupe up);", XeusuUsuar.class)
                 .getResultList();
  
     }
