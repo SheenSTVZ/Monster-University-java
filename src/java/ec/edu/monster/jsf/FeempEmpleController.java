@@ -35,7 +35,7 @@ import javax.mail.internet.MimeMessage;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
-import org.primefaces.model.UploadedFile;
+import org.primefaces.model.file.UploadedFile;
 
 @Named("feempEmpleController")
 @SessionScoped
