@@ -55,17 +55,12 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                             </h:outputText>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListXeusuUsuarTitle_xeusuPiefir}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.xeusuPiefir}"/>
-                        </p:column>
+                        
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListXeusuUsuarTitle_feempCodigo}"/>
                             </f:facet>
-                            <h:outputText value="#{item.feempCodigo}"/>
+                            <h:outputText value="#{item.feempCodigo.feempEmail}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">

@@ -100,7 +100,7 @@ public class loginController implements Serializable{
         System.out.println("logout");
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
  
-        FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/index.xhtml");
  
     }
 }

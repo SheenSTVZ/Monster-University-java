@@ -22,7 +22,7 @@ h1.cabecera{
 }
 
 .icono{
-    background-image: url("./img/fondo.png");
+    background-image: url("/PROYECTO_ARIAS_GOMEZ_ROSERO/resources/img/fondo.png");
 }
 
 a:link, a:visited {

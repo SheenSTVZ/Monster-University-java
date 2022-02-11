@@ -15,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -45,7 +46,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "FeempEmple.findByFeempTelef", query = "SELECT f FROM FeempEmple f WHERE f.feempTelef = :feempTelef")
     , @NamedQuery(name = "FeempEmple.findByFeempEmail", query = "SELECT f FROM FeempEmple f WHERE f.feempEmail = :feempEmail")
     , @NamedQuery(name = "FeempEmple.findByFeempCedula", query = "SELECT f FROM FeempEmple f WHERE f.feempCedula = :feempCedula")
-    , @NamedQuery(name = "FeempEmple.findByFeempFoto", query = "SELECT f FROM FeempEmple f WHERE f.feempFoto = :feempFoto")
     , @NamedQuery(name = "FeempEmple.findByFeempCarfam", query = "SELECT f FROM FeempEmple f WHERE f.feempCarfam = :feempCarfam")
     , @NamedQuery(name = "FeempEmple.findByFeempPasapo", query = "SELECT f FROM FeempEmple f WHERE f.feempPasapo = :feempPasapo")
     , @NamedQuery(name = "FeempEmple.findByFeempDiscapa", query = "SELECT f FROM FeempEmple f WHERE f.feempDiscapa = :feempDiscapa")})
@@ -96,7 +96,8 @@ public class FeempEmple implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "FEEMP_CEDULA")
     private String feempCedula;
-    @Size(max = 100)
+    @Lob
+    @Size(max = 2147483647)
     @Column(name = "FEEMP_FOTO")
     private String feempFoto;
     @Basic(optional = false)

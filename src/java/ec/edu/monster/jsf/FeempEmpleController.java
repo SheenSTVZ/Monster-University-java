@@ -79,8 +79,19 @@ public class FeempEmpleController implements Serializable {
     public void setSelected(FeempEmple selected) {
         this.selected = selected;
         this.usuario = usuFacade.findUsu(selected.getFeempCodigo());
-        
+
         System.out.println(usuario);
+        
+        this.imagepreview = DefaultStreamedContent.builder()
+                .contentType("image/*")
+                .stream(()->{
+                    try{
+                        return new ByteArrayInputStream(Base64.getDecoder().decode(selected.getFeempFoto().getBytes()));
+                    }catch(Exception e){
+                        e.printStackTrace();
+                        return null;
+                    }
+                }).build();
     }
 
     protected void setEmbeddableKeys() {
@@ -103,22 +114,23 @@ public class FeempEmpleController implements Serializable {
         return selected;
     }
 
-    public void preview(FileUploadEvent event) {
+    public String preview(FileUploadEvent event) {
         image = event.getFile();
         System.out.println("Uploaded");
         System.out.println(event.getFile().getFileName());
-//        imagepreview = DefaultStreamedContent.builder()
-//                .contentType("image/*")
-//                .stream(() -> {
-//                    try {
-//                        return new ByteArrayInputStream(event.getFile().getContent());
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                        return null;
-//                    }
-//                })
-//                .build();
-//        return Base64.getEncoder().encodeToString(image.getContent());
+        imagepreview = DefaultStreamedContent.builder()
+                .contentType("image/*")
+                .stream(() -> {
+                    try {
+                        return new ByteArrayInputStream(event.getFile().getContent());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                })
+                .build();
+        System.out.println(Base64.getEncoder().encodeToString(image.getContent()));
+        return Base64.getEncoder().encodeToString(image.getContent());
     }
 
     public UploadedFile getImage() {
@@ -188,7 +200,7 @@ public class FeempEmpleController implements Serializable {
             setEmbeddableKeys();
             try {
                 if (persistAction != PersistAction.DELETE) {
-                    
+                      selected.setFeempFoto(Base64.getEncoder().encodeToString(image.getContent()));
                     getFacade().edit(selected);
                     if (persistAction == PersistAction.CREATE) {
                             usuario.getFeempCodigo().setFeempCodigo(selected.getFeempCodigo());

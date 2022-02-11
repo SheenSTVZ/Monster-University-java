@@ -18,6 +18,7 @@
          <div id="top">
              <ui:insert name="top">
                  <div class="icono">
+                    
                  </div>
                  <h1 class="cabecera">Bienes - MONSTER UNIVERSITY</h1>
              </ui:insert>
@@ -25,46 +26,52 @@
         <div>
             <div id="left">
                 <ui:insert name="left">
-                    <p:menu>
-                        <p:submenu label="Seguridad">
-                            <p:menuitem value="Usuario" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeusuUsuar/List.xhtml" />
-                            <p:menuitem value="Estado de usuario" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeestEstad/List.xhtml" />
-                            <p:menuitem value="Pefil" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeperPerfi/List.xhtml" />
-                            <p:menuitem value="Opciones de un Perfil" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeoxpOpcpe/List.xhtml" />
-                            <p:menuitem value="Asignación de Perfil" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/asignacionperfiles.xhtml" />
+                    <h:form>
+                        <p:menu class="menu">
+                            <p:submenu label="Seguridad">
+                                <p:menuitem value="Usuario" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeusuUsuar/List.xhtml" />
+                                <p:menuitem value="Estado de usuario" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeestEstad/List.xhtml" />
+                                <p:menuitem value="Pefil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeperPerfi/List.xhtml" />
+                                <p:menuitem value="Opciones de un Perfil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeoxpOpcpe/List.xhtml" />
+                                <p:menuitem value="Asignación de Perfil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/asignacionperfiles.xhtml" />
 
-                            <p:menuitem value="Sistema" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xesisSiste/List.xhtml" />
-                            <p:menuitem value="Opciones de Sistema" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeopcOpcio/List.xhtml" />
-                        </p:submenu>
-                        <p:submenu label="Bienes">
-                            <p:menuitem value="Artículo" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beartArticu/List.xhtml" />
-                            <p:menuitem value="Inventario" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beinvInven/List.xhtml" />
-                            <p:menuitem value="Proveedor Bienes" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beprvProv/List.xhtml" />
-                            <p:menuitem value="Almacén" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/bealmAlmacn/List.xhtml" />
-                            <p:menuitem value="Entrada al almacén" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beedaEntalm/List.xhtml" />
-                            <p:menuitem value="Salida al almacén" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/besdaSalalm/List.xhtml" />
-                        </p:submenu>
-                        <p:submenu label="Finanzas">
-                            <p:menuitem value="Empleado" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feempEmple/List.xhtml" />
-                            <p:menuitem value="Centro de costos" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecdcCdcost/List.xhtml" />
-                            <p:menuitem value="Artículos de solicitud" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feartArticu/List.xhtml" />
-                            <p:menuitem value="Cabecera de Solicitud" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecsoCabsol/List.xhtml" />
-                            <p:menuitem value="Detalles de solicitud" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fedsoDetsol/List.xhtml" />
-                            <p:menuitem value="Cabecera de orden de compra" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecocCaor/List.xhtml" />
-                            <p:menuitem value="Detalles de orden de compra" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fedocDeorco/List.xhtml" />
-                            <p:menuitem value="Proveedor" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feprvProv/List.xhtml" />     
-                        </p:submenu>
-                        <p:submenu label="Personal">
-                            <p:menuitem value="Estado Civil" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peescEstciv/List.xhtml" />  
-                            <p:menuitem value="Sexo" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pesexSexo/List.xhtml" />         
-                            <p:menuitem value="Cargo de empleado" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pecarCargo/List.xhtml" />  
-                            <p:menuitem value="Departamento de empleado" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pedepDepar/List.xhtml" />  
-                            <p:menuitem value="País" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pepaisPais/List.xhtml" />  
-                            <p:menuitem value="Provincia" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peprovProvin/List.xhtml" />
-                            <p:menuitem value="Cantón" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pecanCanton/List.xhtml" />     
-                            <p:menuitem value="Parroquia" url="/PROYECTO11_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peparParro/List.xhtml" />
-                        </p:submenu>
-                    </p:menu>
+                                <p:menuitem value="Sistema" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xesisSiste/List.xhtml" />
+                                <p:menuitem value="Opciones de Sistema" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeopcOpcio/List.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Bienes">
+                                <p:menuitem value="Artículo" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beartArticu/List.xhtml" />
+                                <p:menuitem value="Inventario" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beinvInven/List.xhtml" />
+                                <p:menuitem value="Proveedor Bienes" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beprvProv/List.xhtml" />
+                                <p:menuitem value="Almacén" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/bealmAlmacn/List.xhtml" />
+                                <p:menuitem value="Entrada al almacén" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beedaEntalm/List.xhtml" />
+                                <p:menuitem value="Salida al almacén" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/besdaSalalm/List.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Finanzas">
+                                <p:menuitem value="Empleado" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feempEmple/List.xhtml" />
+                                <p:menuitem value="Centro de costos" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecdcCdcost/List.xhtml" />
+                                <p:menuitem value="Artículos de solicitud" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feartArticu/List.xhtml" />
+                                <p:menuitem value="Cabecera de Solicitud" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecsoCabsol/List.xhtml" />
+                                <p:menuitem value="Detalles de solicitud" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fedsoDetsol/List.xhtml" />
+                                <p:menuitem value="Cabecera de orden de compra" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecocCaor/List.xhtml" />
+                                <p:menuitem value="Detalles de orden de compra" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fedocDeorco/List.xhtml" />
+                                <p:menuitem value="Proveedor" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feprvProv/List.xhtml" />     
+                            </p:submenu>
+                            <p:submenu label="Personal">
+                                <p:menuitem value="Estado Civil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peescEstciv/List.xhtml" />  
+                                <p:menuitem value="Sexo" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pesexSexo/List.xhtml" />         
+                                <p:menuitem value="Cargo de empleado" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pecarCargo/List.xhtml" />  
+                                <p:menuitem value="Departamento de empleado" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pedepDepar/List.xhtml" />  
+                                <p:menuitem value="País" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pepaisPais/List.xhtml" />  
+                                <p:menuitem value="Provincia" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peprovProvin/List.xhtml" />
+                                <p:menuitem value="Cantón" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pecanCanton/List.xhtml" />     
+                                <p:menuitem value="Parroquia" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peparParro/List.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Salir">
+                                <p:menuitem value="Cerrar Sesión" actionListener="#{loginController.doLogout}" />
+                            </p:submenu>
+                        </p:menu>
+                       
+                    </h:form>
                 </ui:insert>
             </div>
             <div id="content" class="left_content">

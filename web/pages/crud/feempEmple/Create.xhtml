@@ -26,8 +26,9 @@
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempEmail}" for="feempEmail" />
                         <p:inputText id="feempEmail" value="#{feempEmpleController.selected.feempEmail}" title="#{bundle.CreateFeempEmpleTitle_feempEmail}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempEmail}"/>
                         </p:panelGrid>
-                        <p:panelGrid columns="1">
-                            
+                        <p:panelGrid columns="1" rendered="#{feempEmpleController.selected != null}">
+                            <p:graphicImage value="#{feempEmpleController.imagepreview}" style="width:200px;"  cache="false" id="Image"/>
+                            <p:fileUpload sizeLimit="1048500" listener="#{feempEmpleController.preview}" mode="simple" skinSimple="true" auto="true" update="Image"/>
                         </p:panelGrid> 
                     </p:panelGrid>
                     <p:tabView>
