@@ -1,10 +1,11 @@
 
 #top {
     position: relative;
-    background-color: #036fab;
+    display: flex;
+    align-items: center;
+    background-color: #C1CEFE;
     color: white;
-    padding: 5px;
-    margin: 0px 0px 10px 0px;
+    padding: 15px;
 }
 
 #bottom {
@@ -16,9 +17,9 @@
 
 #left {
     float: left;
-    background-color: #ece3a5;
     padding: 5px;
     width: auto;
+    margin: 0;
 
 }
 
@@ -29,25 +30,15 @@
     width: 150px;
 }
 
-.center_content {
-    position: relative;
-    background-color: #dddddd;
-    padding: 5px;
-}
 
 .left_content {
-    background-color: #dddddd;
+    background-color: #fff;
     padding: 5px;
-    margin-left: 220px;
+    margin: 10px;
     
 }
 
 
-/*.right_content {
-    background-color: #dddddd;
-    padding: 5px;
-    margin: 0px 170px 0px 170px;
-}*/
 
 #top a:link, #top a:visited {
   color: white;

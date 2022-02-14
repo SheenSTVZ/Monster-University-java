@@ -205,17 +205,17 @@ public class FeempEmpleController implements Serializable {
                     if (persistAction == PersistAction.CREATE) {
                             usuario.getFeempCodigo().setFeempCodigo(selected.getFeempCodigo());
                             usuario.setXeusuCodigo(selected.getFeempCodigo());
-                             String claveAleatoria = passwordController.getRandomString(8);
-                             Date date = new Date();
-                             XeestEstad estado = new XeestEstad();
-                estado.setXeestCodigo("0");
-                estado.setXeestDescri("Inactivo");
-                             usuario.setXeusuPaswd(passwordController.md5(claveAleatoria));
-                             usuario.setXeusuFeccre(date);
-                             usuario.setXeestCodigo(estado);
-                             System.out.println(usuario);
-                             enviarConGmail(selected.getFeempEmail(), "Contraseña", "Su contraseña de primer acceso es: "+claveAleatoria);
-                             usuFacade.edit(usuario);
+                            String claveAleatoria = passwordController.getRandomString(8);
+                            Date date = new Date();
+                            XeestEstad estado = new XeestEstad();
+                            estado.setXeestCodigo("0");
+                            estado.setXeestDescri("Inactivo");
+                            usuario.setXeusuPaswd(passwordController.md5(claveAleatoria));
+                            usuario.setXeusuFeccre(date);
+                            usuario.setXeestCodigo(estado);
+                            System.out.println(usuario);
+                            enviarConGmail(selected.getFeempEmail(), "Contraseña", "Su contraseña de primer acceso es: "+claveAleatoria);
+                            usuFacade.edit(usuario);
                         }
 
                 } else {

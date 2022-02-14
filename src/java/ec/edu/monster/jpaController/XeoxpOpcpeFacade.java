@@ -6,6 +6,7 @@
 package ec.edu.monster.jpaController;
 
 import ec.edu.monster.model.XeoxpOpcpe;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,4 +30,12 @@ public class XeoxpOpcpeFacade extends AbstractFacade<XeoxpOpcpe> {
         super(XeoxpOpcpe.class);
     }
     
+    
+    
+    
+    public XeoxpOpcpe getElement(String perfil, String op) {
+        return (XeoxpOpcpe) em.createNativeQuery("select * from xeoxp_opcpe where XEPER_CODIGO like ? AND XEOPC_CODIGO like ?",
+                XeoxpOpcpe.class).setParameter(1, perfil).setParameter(2, op).getSingleResult();
+    }
+
 }

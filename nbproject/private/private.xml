@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Universidad/9%20Semestre/Aplicaciones%20Distribuidas/PARCIAL-III/PROYECTO/proyecto-monster/PROYECTO_ARIAS_GOMEZ_ROSERO/web/resources/css/cssLayout.css</file>
             <file>file:/D:/Universidad/9%20Semestre/Aplicaciones%20Distribuidas/PARCIAL-III/PROYECTO/proyecto-monster/PROYECTO_ARIAS_GOMEZ_ROSERO/web/template.xhtml</file>
-            <file>file:/D:/Universidad/9%20Semestre/Aplicaciones%20Distribuidas/PARCIAL-III/PROYECTO/proyecto-monster/PROYECTO_ARIAS_GOMEZ_ROSERO/web/resources/css/default.css</file>
-            <file>file:/D:/Universidad/9%20Semestre/Aplicaciones%20Distribuidas/PARCIAL-III/PROYECTO/proyecto-monster/PROYECTO_ARIAS_GOMEZ_ROSERO/web/resources/css/style.css</file>
+            <file>file:/D:/Universidad/9%20Semestre/Aplicaciones%20Distribuidas/PARCIAL-III/PROYECTO/proyecto-monster/PROYECTO_ARIAS_GOMEZ_ROSERO/src/java/ec/edu/monster/jsf/XeuxpUsupeController.java</file>
+            <file>file:/D:/Universidad/9%20Semestre/Aplicaciones%20Distribuidas/PARCIAL-III/PROYECTO/proyecto-monster/PROYECTO_ARIAS_GOMEZ_ROSERO/src/java/ec/edu/monster/jpaController/XeuxpUsupeFacade.java</file>
+            <file>file:/D:/Universidad/9%20Semestre/Aplicaciones%20Distribuidas/PARCIAL-III/PROYECTO/proyecto-monster/PROYECTO_ARIAS_GOMEZ_ROSERO/web/pages/asignacionopciones.xhtml</file>
+            <file>file:/D:/Universidad/9%20Semestre/Aplicaciones%20Distribuidas/PARCIAL-III/PROYECTO/proyecto-monster/PROYECTO_ARIAS_GOMEZ_ROSERO/src/java/ec/edu/monster/controller/templateController.java</file>
+            <file>file:/D:/Universidad/9%20Semestre/Aplicaciones%20Distribuidas/PARCIAL-III/PROYECTO/proyecto-monster/PROYECTO_ARIAS_GOMEZ_ROSERO/src/java/ec/edu/monster/jsf/FeempEmpleController.java</file>
         </group>
     </open-files>
 </project-private>

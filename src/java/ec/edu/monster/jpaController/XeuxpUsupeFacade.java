@@ -35,13 +35,15 @@ public class XeuxpUsupeFacade extends AbstractFacade<XeuxpUsupe> {
     }
     
     public XeuxpUsupe getUsuarioPerfil(XeusuUsuar codigoUsu){
-        System.out.println(codigoUsu);
-        
         Query query
                 = getEntityManager().createNativeQuery("SELECT * FROM xeuxp_usupe WHERE XEUSU_CODIGO LIKE ?", XeuxpUsupe.class);
-        
-        return (XeuxpUsupe)query.setParameter(1,codigoUsu.getFeempCodigo().getFeempCodigo()).getSingleResult();
+        try{
+            return (XeuxpUsupe) query.setParameter(1,codigoUsu.getXeusuCodigo()).getSingleResult();
+        }catch (Exception e){
+            return null;
+        }
     }
+    
     
     public List<XeuxpUsupe> getUsuarioPerfilP(String codPerfil) {
  
@@ -65,6 +67,7 @@ public class XeuxpUsupeFacade extends AbstractFacade<XeuxpUsupe> {
         System.out.println(query.setParameter("xeperCodigo", id).getResultList());
         return query.setParameter("xeperCodigo", id).getResultList();
     }
+        
         
         
        @Transactional

@@ -15,68 +15,114 @@
     </h:head>
 
     <h:body>
-         <div id="top">
-             <ui:insert name="top">
-                 <div class="icono">
-                    
-                 </div>
-                 <h1 class="cabecera">Bienes - MONSTER UNIVERSITY</h1>
-             </ui:insert>
-        </div>
-        <div>
-            <div id="left">
-                <ui:insert name="left">
+        <pe:layout fullPage="true">
+            <pe:layoutPane position="north" size="auto" closable="false" resizable="false">
+                <div id="top">
+                 <img alt="Icono" src="/PROYECTO_ARIAS_GOMEZ_ROSERO/resources/img/fondo.png" width="90px" id="icono"/>
+                 <h1 class="cabecera">MONSTER UNIVERSITY</h1>
+                </div>
+            </pe:layoutPane>
+         
+            <pe:layoutPane position="west" size="215" closable="false" resizable="false">
+                
+                <div id="left">
+                
                     <h:form>
-                        <p:menu class="menu">
-                            <p:submenu label="Seguridad">
-                                <p:menuitem value="Usuario" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeusuUsuar/List.xhtml" />
-                                <p:menuitem value="Estado de usuario" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeestEstad/List.xhtml" />
-                                <p:menuitem value="Pefil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeperPerfi/List.xhtml" />
-                                <p:menuitem value="Opciones de un Perfil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeoxpOpcpe/List.xhtml" />
-                                <p:menuitem value="Asignación de Perfil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/asignacionperfiles.xhtml" />
-
-                                <p:menuitem value="Sistema" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xesisSiste/List.xhtml" />
-                                <p:menuitem value="Opciones de Sistema" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeopcOpcio/List.xhtml" />
+                        <p:growl id="messages" showDetail="true"/>
+                        <p:slideMenu  style="">
+                            <p:submenu label="Seguridad" icon="pi pi-shield" rendered="#{(templateController.profileIsAllowed('SEGURIDAD'))}">
+                                <p:submenu label="Administración">
+                                    <p:menuitem value="Usuario" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeusuUsuar/List.xhtml" />
+                                    <p:menuitem value="Estado de usuario" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeestEstad/List.xhtml" />
+                                    <p:menuitem value="Perfil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeperPerfi/List.xhtml" />
+                                    <p:menuitem value="Opciones de un Perfil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/xeoxpOpcpe/List.xhtml" />
+                                    <p:menuitem value="Proveedor" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feprvProv/List.xhtml" />
+                                </p:submenu>
+                                <p:submenu label="Procesos">
+                                    <p:menuitem value="Asignación de Perfil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/asignacionperfiles.xhtml" />
+                                </p:submenu>
+                                <p:submenu label="Reportes">
+                                    <p:menuitem value="No existen reportes por el momento"/>
+                                </p:submenu>  
                             </p:submenu>
-                            <p:submenu label="Bienes">
-                                <p:menuitem value="Artículo" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beartArticu/List.xhtml" />
-                                <p:menuitem value="Inventario" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beinvInven/List.xhtml" />
-                                <p:menuitem value="Proveedor Bienes" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beprvProv/List.xhtml" />
-                                <p:menuitem value="Almacén" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/bealmAlmacn/List.xhtml" />
-                                <p:menuitem value="Entrada al almacén" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beedaEntalm/List.xhtml" />
-                                <p:menuitem value="Salida al almacén" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/besdaSalalm/List.xhtml" />
+                            
+                            <p:submenu label="Finanzas" icon="pi pi-money-bill" rendered="#{(templateController.profileIsAllowed('FINANZAS') || templateController.profileIsAllowed('EMPLEADO'))}">
+                                <p:submenu label="Administración">
+                                    <p:menuitem value="Centro de costos" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecdcCdcost/List.xhtml" />
+                                    <p:menuitem value="Artículos de solicitud" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feartArticu/List.xhtml" rendered="#{(templateController.profileIsAllowed('EMPLEADO'))}"/>
+                                    <p:menuitem value="Cabecera de Solicitud" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecsoCabsol/List.xhtml" rendered="#{(templateController.profileIsAllowed('EMPLEADO'))}"/>
+                                    <p:menuitem value="Detalles de solicitud" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fedsoDetsol/List.xhtml" rendered="#{(templateController.profileIsAllowed('EMPLEADO'))}"/>
+                                </p:submenu>
+                                <p:submenu label="Procesos"></p:submenu>
+                                <p:submenu label="Reportes"></p:submenu>
                             </p:submenu>
-                            <p:submenu label="Finanzas">
-                                <p:menuitem value="Empleado" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feempEmple/List.xhtml" />
-                                <p:menuitem value="Centro de costos" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecdcCdcost/List.xhtml" />
-                                <p:menuitem value="Artículos de solicitud" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feartArticu/List.xhtml" />
-                                <p:menuitem value="Cabecera de Solicitud" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecsoCabsol/List.xhtml" />
-                                <p:menuitem value="Detalles de solicitud" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fedsoDetsol/List.xhtml" />
-                                <p:menuitem value="Cabecera de orden de compra" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecocCaor/List.xhtml" />
-                                <p:menuitem value="Detalles de orden de compra" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fedocDeorco/List.xhtml" />
-                                <p:menuitem value="Proveedor" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feprvProv/List.xhtml" />     
+                            
+                            <p:submenu label="Compras" icon="pi pi-shopping-cart" rendered="#{(templateController.profileIsAllowed('FINANZAS') || templateController.profileIsAllowed('COMPRAS'))}">
+                                <p:submenu label="Administración">
+                                    <p:menuitem value="Cabecera de orden de compra" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecocCaor/List.xhtml" rendered="#{templateController.profileIsAllowed('COMPRAS')}"/>
+                                    <p:menuitem value="Detalles de orden de compra" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fedocDeorco/List.xhtml" rendered="#{templateController.profileIsAllowed('COMPRAS')}"/>
+                                    <p:menuitem value="Cabecera de orden de compra" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fecocCaor/List.xhtml" rendered="#{templateController.profileIsAllowed('COMPRAS')}"/>
+                                    <p:menuitem value="Detalles de orden de compra" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/fedocDeorco/List.xhtml" rendered="#{templateController.profileIsAllowed('COMPRAS')}"/>
+                                </p:submenu>
+                                <p:submenu label="Procesos">
+                                    <p:menuitem value="No existen procesos por el momento"/>
+                                </p:submenu>
+                                <p:submenu label="Reportes">
+                                    <p:menuitem value="No existen reportes por el momento"/>
+                                </p:submenu>
                             </p:submenu>
-                            <p:submenu label="Personal">
-                                <p:menuitem value="Estado Civil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peescEstciv/List.xhtml" />  
-                                <p:menuitem value="Sexo" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pesexSexo/List.xhtml" />         
-                                <p:menuitem value="Cargo de empleado" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pecarCargo/List.xhtml" />  
-                                <p:menuitem value="Departamento de empleado" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pedepDepar/List.xhtml" />  
-                                <p:menuitem value="País" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pepaisPais/List.xhtml" />  
-                                <p:menuitem value="Provincia" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peprovProvin/List.xhtml" />
-                                <p:menuitem value="Cantón" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pecanCanton/List.xhtml" />     
-                                <p:menuitem value="Parroquia" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peparParro/List.xhtml" />
+                            
+                            <p:submenu label="Bienes"  icon="pi pi-building" rendered="#{templateController.profileIsAllowed('ENCARGADO ALMACÉN')}">
+                                <p:submenu label="Administración">
+                                    <p:menuitem value="Artículo" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beartArticu/List.xhtml" />
+                                    <p:menuitem value="Inventario" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beinvInven/List.xhtml" />
+                                    <p:menuitem value="Proveedor Bienes" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beprvProv/List.xhtml" />
+                                    <p:menuitem value="Almacén" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/bealmAlmacn/List.xhtml" />
+                                </p:submenu>
+                                <p:submenu label="Procesos">
+                                    <p:menuitem value="Entrada al almacén" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/beedaEntalm/List.xhtml" />
+                                    <p:menuitem value="Salida al almacén" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/besdaSalalm/List.xhtml" />
+                                </p:submenu>
+                                <p:submenu label="Reportes">
+                                    <p:menuitem value="No existen reportes por el momento"/>
+                                </p:submenu>
                             </p:submenu>
-                            <p:submenu label="Salir">
+                            
+                            <p:submenu label="Personal" icon="pi pi-users" rendered="#{templateController.profileIsAllowed('PERSONAL')}">
+                                <p:submenu label="Administración">
+                                    <p:menuitem value="Empleado" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/feempEmple/List.xhtml" />
+                                    <p:menuitem value="Cargo de empleado" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pecarCargo/List.xhtml" />  
+                                    <p:menuitem value="Departamento de empleado" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pedepDepar/List.xhtml" /> 
+                                    <p:menuitem value="Estado Civil" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peescEstciv/List.xhtml" />  
+                                    <p:menuitem value="Sexo" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pesexSexo/List.xhtml" />          
+                                    <p:menuitem value="País" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pepaisPais/List.xhtml" />  
+                                    <p:menuitem value="Provincia" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peprovProvin/List.xhtml" />
+                                    <p:menuitem value="Cantón" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/pecanCanton/List.xhtml" />     
+                                    <p:menuitem value="Parroquia" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/crud/peparParro/List.xhtml" />
+                                </p:submenu>
+                                <p:submenu label="Procesos">
+                                    <p:menuitem value="No existen procesos por el momento"/>
+                                </p:submenu>
+                                <p:submenu label="Reportes">
+                                    <p:menuitem value="No existen reportes por el momento"/>
+                                </p:submenu>   
+                            </p:submenu>
+                            <p:submenu label="Cuenta de Usuario" icon="pi pi-user">
+                                <p:menuitem value="Cambiar Contraseña" url="/PROYECTO_ARIAS_GOMEZ_ROSERO/faces/pages/CambiarContrasenia.xhtml" />
                                 <p:menuitem value="Cerrar Sesión" actionListener="#{loginController.doLogout}" />
                             </p:submenu>
-                        </p:menu>
+                            
+                            
+                            
+                        </p:slideMenu>
                        
                     </h:form>
-                </ui:insert>
             </div>
-            <div id="content" class="left_content">
-                <ui:insert name="content">
-                    <h1>
+                
+            </pe:layoutPane>
+            <pe:layoutPane position="center">
+                <div id="content" class="left_content">
+                <h1>
                         <ui:insert name="title">Contenido</ui:insert>
                     </h1>
 
@@ -84,10 +130,10 @@
                         <ui:insert name="body">Selecciona una opción del menú</ui:insert>
                     </p>
                     <p:growl id="growl" life="3000" />
-                            </ui:insert>
-                        </div>
                     </div>
-        
+            </pe:layoutPane>
+                        
+        </pe:layout>
     </h:body>
 
 </html>
