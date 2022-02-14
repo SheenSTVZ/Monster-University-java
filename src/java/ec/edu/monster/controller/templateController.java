@@ -5,7 +5,7 @@
  */
 package ec.edu.monster.controller;
 
-import ec.edu.monster.jpaController.XeuxpUsupeFacade;
+import ec.edu.monster.facade.XeuxpUsupeFacade;
 import ec.edu.monster.model.XeusuUsuar;
 import ec.edu.monster.model.XeuxpUsupe;
 import java.io.IOException;

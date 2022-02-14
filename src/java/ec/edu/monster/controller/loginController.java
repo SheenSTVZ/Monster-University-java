@@ -5,7 +5,7 @@
  */
 package ec.edu.monster.controller;
 
-import ec.edu.monster.jpaController.XeusuUsuarFacade;
+import ec.edu.monster.facade.XeusuUsuarFacade;
 import ec.edu.monster.model.FeempEmple;
 import ec.edu.monster.model.XeusuUsuar;
 import java.io.IOException;

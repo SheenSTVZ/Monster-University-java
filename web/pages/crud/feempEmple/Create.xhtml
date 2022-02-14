@@ -33,7 +33,8 @@
                     </p:panelGrid>
                     <p:tabView>
                         <p:tab title="Datos personales">
-                            <p:panelGrid columns="2" rendered="#{feempEmpleController.selected != null}">
+                            <p:scrollPanel  style="width:auto;height:200px" >
+                                <p:panelGrid columns="2" rendered="#{feempEmpleController.selected != null}">
                                 <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempFecnac}" for="feempFecnac" />
                         <p:calendar id="feempFecnac" pattern="MM/dd/yyyy" value="#{feempEmpleController.selected.feempFecnac}" title="#{bundle.EditFeempEmpleTitle_feempFecnac}" required="true" requiredMessage="#{bundle.EditFeempEmpleRequiredMessage_feempFecnac}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempTelef}" for="feempTelef" />
@@ -42,7 +43,7 @@
                         <p:inputText id="feempCarfam" value="#{feempEmpleController.selected.feempCarfam}" title="#{bundle.CreateFeempEmpleTitle_feempCarfam}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempCarfam}"/>
                         
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempDiscapa}" for="feempDiscapa" />
-                        <p:inputTextarea rows="4" cols="30" id="feempDiscapa" value="#{feempEmpleController.selected.feempDiscapa}" title="#{bundle.CreateFeempEmpleTitle_feempDiscapa}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempDiscapa}"/>
+                        <p:inputText id="feempDiscapa" value="#{feempEmpleController.selected.feempDiscapa}" title="#{bundle.CreateFeempEmpleTitle_feempDiscapa}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempDiscapa}"/>
                         
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_pecarCargo}" for="pecarCargo" />
                         <p:selectOneMenu id="pecarCargo" value="#{feempEmpleController.selected.pecarCargo}" required="true" requiredMessage="#{bundle.EditFeempEmpleRequiredMessage_pecarCargo}">
@@ -64,9 +65,10 @@
                                            var="pesexCodigoItem" itemLabel="#{pesexCodigoItem.pesexDescri}"
                                            itemValue="#{pesexCodigoItem}"/>
                         </p:selectOneMenu>
-                            </p:panelGrid>
+                        </p:panelGrid>
+                            </p:scrollPanel >
+                            
                         </p:tab>
-                        
                         <p:tab title="Dirección">
                             <p:panelGrid columns="2" rendered="#{feempEmpleController.selected != null}">
                                 <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_peparParro}" for="peparParro" />
