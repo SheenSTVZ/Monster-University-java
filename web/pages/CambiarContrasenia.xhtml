@@ -17,7 +17,9 @@
                     <p:outputLabel value="Contraseña Antigua" for="passAn"/>
                     <p:password required="true" id="passAn" value="#{xeusuUsuarController.antPassword}"/>
                     <p:outputLabel value="Contraseña Nueva" for="passNu"/>
-                    <p:password required="true" id="passNu" value="#{xeusuUsuarController.newPassword}"/>
+                    <p:password  required="true" id="passNu" feedback="true"
+                    promptLabel="Ingresa tu contraseña" weakLabel="Débil"
+                    goodLabel="Buena" strongLabel="Fuerte" value="#{xeusuUsuarController.newPassword}"/>
                     <p:outputLabel value="Repetir Contraseña Nueva" for="repPassNu"/>
                     <p:password required="true" id="repPassNu" value="#{xeusuUsuarController.repPassword}"/>
                     <p:column />

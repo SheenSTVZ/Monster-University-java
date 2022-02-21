@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
-    <ui:composition template="template.xhtml">
+    <ui:composition template="../template.xhtml">
         <ui:define name="style">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
             <link rel="stylesheet" href="style.css"/>
@@ -32,17 +32,17 @@
                                                 itemLabel="Seleccione un perfil" 
                                                 itemValue=""
                                                 />
-                                            <f:selectItems value="#{xeperPerfilController.itemsAvailableSelectMany}"
+                                            <f:selectItems value="#{xeperPerfiController.itemsAvailableSelectMany}"
                                                            var="perfilItem"
                                                            itemLabel="#{perfilItem.xeperDescri}" 
-                                                           itemValue="#{perfilItem.xeperCodper}"
+                                                           itemValue="#{perfilItem.xeperCodigo}"
                                                            />
                                         </p:selectOneMenu>
                                     </p:panelGrid>
                                 </div> 
                                 <div class="card-content">
                                     <p:panelGrid columns="1" id="OpcionesDisponibles" >
-                                        <p:tree value="#{asignacionOpcionesController.root}" var="node" style="margin: 0 auto;">
+                                        <p:tree  value="#{asignacionOpcionesController.root}" var="node" style="margin: 0 auto;">
 
 
                                             <p:treeNode>
@@ -51,7 +51,7 @@
                                             <p:treeNode type="Opc">
                                                 <p:selectOneRadio value="#{asignacionOpcionesController.option_values[asignacionOpcionesController.getValue(node)]}" 
                                                                   valueChangeListener="#{asignacionOpcionesController.manageChange2}" 
-                                                                  layout="grid" columns="1" unselectable="true" converter="xeopcConverter">
+                                                                  layout="grid" columns="1" unselectable="true">
                                                     <f:selectItems value="#{node}" var="o" itemValue="#{o}" itemLabel="#{o.getXeopcDescri()}" />
 
 

@@ -30,12 +30,18 @@ public class XeoxpOpcpeFacade extends AbstractFacade<XeoxpOpcpe> {
         super(XeoxpOpcpe.class);
     }
     
-    
+    public List<XeoxpOpcpe> getOpPer(String perfil) {
+        System.out.println(perfil);
+        return em.createNativeQuery("select * from xeoxp_opcpe where XEPER_CODIGO like ?", XeoxpOpcpe.class).setParameter(1, perfil).getResultList();
+    }
+
     
     
     public XeoxpOpcpe getElement(String perfil, String op) {
         return (XeoxpOpcpe) em.createNativeQuery("select * from xeoxp_opcpe where XEPER_CODIGO like ? AND XEOPC_CODIGO like ?",
                 XeoxpOpcpe.class).setParameter(1, perfil).setParameter(2, op).getSingleResult();
     }
+    
+    
 
 }
