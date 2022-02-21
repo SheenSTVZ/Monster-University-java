@@ -6,6 +6,7 @@ import ec.edu.monster.model.XeusuUsuar;
 import ec.edu.monster.jsf.util.JsfUtil;
 import ec.edu.monster.jsf.util.JsfUtil.PersistAction;
 import ec.edu.monster.facade.FeempEmpleFacade;
+import ec.edu.monster.model.PesexSexo;
 import ec.edu.monster.model.XeestEstad;
 import java.io.ByteArrayInputStream;
 
@@ -53,6 +54,8 @@ public class FeempEmpleController implements Serializable {
     private XeusuUsuar usuario;
     private StreamedContent imagepreview;
     private UploadedFile image;
+    private PesexSexo sexo;
+    private Date rangoInicio, rangoFinal;
 
     public FeempEmpleController() {
     }
@@ -65,6 +68,30 @@ public class FeempEmpleController implements Serializable {
     }
     public StreamedContent getImagepreview() {
         return imagepreview;
+    }
+
+    public PesexSexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(PesexSexo sexo) {
+        this.sexo = sexo;
+    }
+
+    public Date getRangoInicio() {
+        return rangoInicio;
+    }
+
+    public void setRangoInicio(Date rangoInicio) {
+        this.rangoInicio = rangoInicio;
+    }
+
+    public Date getRangoFinal() {
+        return rangoFinal;
+    }
+
+    public void setRangoFinal(Date rangoFinal) {
+        this.rangoFinal = rangoFinal;
     }
  
     public void setImagepreview(StreamedContent imagepreview) {
@@ -193,6 +220,14 @@ public class FeempEmpleController implements Serializable {
         }catch (MessagingException me){
             me.printStackTrace();
         }
+    }
+    
+    public List<FeempEmple> getEmpleados(String id, Date inicio, Date ffinal){
+        System.out.println("id sexo empleados: " +id + inicio + ffinal);
+        if((getFacade().findEmpleados(id, inicio, ffinal).size()>0)){
+            getFacade().findEmpleados(id, inicio, ffinal).get(0).getFeempNombre();
+        }
+        return getFacade().findEmpleados(id, inicio, ffinal);
     }
     
     private void persist(PersistAction persistAction, String successMessage) {
