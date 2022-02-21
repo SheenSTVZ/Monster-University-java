@@ -52,7 +52,7 @@
                                                 <p:selectOneRadio value="#{asignacionOpcionesController.option_values[asignacionOpcionesController.getValue(node)]}" 
                                                                   valueChangeListener="#{asignacionOpcionesController.manageChange2}" 
                                                                   layout="grid" columns="1" unselectable="true">
-                                                    <f:selectItems value="#{node}" var="o" itemValue="#{o}" itemLabel="#{o.getXeopcDescri()}" />
+                                                    <f:selectItems value="#{node}" var="o" itemValue="#{o.getXeopcCodigo()}" itemLabel="#{o.getXeopcDescri()}" />
 
 
                                                     <p:ajax listener="#{asignacionOpcionesController.manageChange}"/>

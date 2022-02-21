@@ -10,6 +10,8 @@ import ec.edu.monster.model.XeopcOpcio;
 import ec.edu.monster.model.XeoxpOpcpe;
 import ec.edu.monster.model.XeperPerfi;
 import ec.edu.monster.model.XesisSiste;
+import ec.edu.monster.controllers.XeopcOpcioController;
+import ec.edu.monster.model.XeoxpOpcpePK;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -49,6 +51,8 @@ public class AsignacionOpcionesController implements Serializable {
     private ec.edu.monster.facade.XesisSisteFacade sistemasFacade;
     @EJB
     private ec.edu.monster.facade.XeoxpOpcpeFacade opcionPerfilFacade;
+    @EJB
+    private ec.edu.monster.facade.XeopcOpcioFacade opcionFacade;
 
 
 
@@ -144,20 +148,30 @@ public class AsignacionOpcionesController implements Serializable {
     private void persistOptions() {
         for (Map.Entry<Integer, Object> entry : option_values.entrySet()) {
  
-            XeopcOpcio value = (XeopcOpcio) entry.getValue();
+            String value = (String) entry.getValue();
+            
             if (value != null) {
                 XeoxpOpcpe t = new XeoxpOpcpe();
- 
-                t.getXeoxpOpcpePK().setXeoxpFecasi(new Date());
+                System.out.println(value);
+                XeopcOpcio opcion1 = opcionFacade.getOpcion(value);
+                
+                XeoxpOpcpePK OpcpePK = new XeoxpOpcpePK();
+                
+                OpcpePK.setXeopcCodigo(opcion1.getXeopcCodigo());
+                OpcpePK.setXeperCodigo(perfil);
+                OpcpePK.setXeoxpFecasi(new Date());
+
                 t.setXeperPerfi(new XeperPerfi(perfil));
-                t.setXeopcOpcio(value);
+                t.setXeopcOpcio(opcion1);
+                t.setXeoxpOpcpePK(OpcpePK);
+                
  
                 opcionesPorPerfil.forEach(ope -> {
                     if (ope.getXeperPerfi().getXeperCodigo().equals(perfil)) {
                         ope.getXeperPerfi().getXeoxpOpcpeCollection().forEach(opcion -> {
                             System.out.println(opcion);
                             System.out.println(value);
-                            if (opcion.getXeopcOpcio().getXesisCodigo().equals(value.getXesisCodigo())) {
+                            if (opcion.getXeopcOpcio().getXesisCodigo().equals(value)) {
                                 canReassign = false;
                             }
                         });

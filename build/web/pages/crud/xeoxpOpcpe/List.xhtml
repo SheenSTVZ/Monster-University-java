@@ -47,13 +47,13 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListXeoxpOpcpeTitle_xeopcOpcio}"/>
                             </f:facet>
-                            <h:outputText value="#{item.xeopcOpcio}"/>
+                            <h:outputText value="#{item.xeopcOpcio.xeopcDescri}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListXeoxpOpcpeTitle_xeperPerfi}"/>
                             </f:facet>
-                            <h:outputText value="#{item.xeperPerfi}"/>
+                            <h:outputText value="#{item.xeperPerfi.xeperDescri}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{xeoxpOpcpeController.prepareCreate}" update=":XeoxpOpcpeCreateForm" oncomplete="PF('XeoxpOpcpeCreateDialog').show()"/>

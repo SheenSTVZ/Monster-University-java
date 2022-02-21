@@ -6,9 +6,12 @@
 package ec.edu.monster.facade;
 
 import ec.edu.monster.model.XeopcOpcio;
+import ec.edu.monster.model.XeuxpUsupe;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -27,6 +30,13 @@ public class XeopcOpcioFacade extends AbstractFacade<XeopcOpcio> {
 
     public XeopcOpcioFacade() {
         super(XeopcOpcio.class);
+    }
+    
+    public XeopcOpcio getOpcion(String codPerfil) {
+ 
+        TypedQuery<XeopcOpcio> query
+                = getEntityManager().createNamedQuery("XeopcOpcio.findByXeopcCodigo", XeopcOpcio.class);
+        return query.setParameter("xeopcCodigo", codPerfil).getSingleResult();
     }
     
 }
