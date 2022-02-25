@@ -85,5 +85,5 @@ public class XeuxpUsupeFacade extends AbstractFacade<XeuxpUsupe> {
         getEntityManager().createNativeQuery("DELETE FROM xeuxp_usupe WHERE XEUSU_CODIGO like ?").setParameter(1, id_persona)
                 .executeUpdate();
     }
+    
 }
- 

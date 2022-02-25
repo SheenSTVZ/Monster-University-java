@@ -32,13 +32,15 @@
                         <p:datePicker id="fechaFinal" value="#{feempEmpleController.rangoFinal}" monthNavigator="true" yearNavigator="true" showWeek="true">
                             <p:ajax event="valueChange" update="assignedUsers"/>
                         </p:datePicker>
-                        <p:commandButton  icon="pi pi-file-pdf">
-                            <p:printer target="opcionT" title="Reporte de Empleados" />
-                        </p:commandButton >
+                        <h:commandLink>
+                            <p:button icon="pi pi-file-pdf"></p:button>
+                            <p:dataExporter type="pdf" target="tableReport" fileName="ReservaPDF"/>
+                    </h:commandLink>
+
                     </p:panelGrid>
                     <p:panelGrid columns="1" style="width: 100%" id="opcionT">
                         <p:panel id="assignedUsers" style="width: 100%" header="" >
-                            <p:dataTable value="#{feempEmpleController.getEmpleados(feempEmpleController.sexo.pesexCodigo, feempEmpleController.rangoInicio, feempEmpleController.rangoFinal)}" 
+                            <p:dataTable id="tableReport" value="#{feempEmpleController.getEmpleados(feempEmpleController.sexo.pesexCodigo, feempEmpleController.rangoInicio, feempEmpleController.rangoFinal)}" 
                                          var="opcion" >
 
                                 <p:column>

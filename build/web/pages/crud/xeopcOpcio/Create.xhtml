@@ -20,7 +20,15 @@
                         <p:selectOneMenu id="xesisCodigo" value="#{xeopcOpcioController.selected.xesisCodigo}" required="true" requiredMessage="#{bundle.EditXeopcOpcioRequiredMessage_xesisCodigo}">
                             <f:selectItems value="#{xesisSisteController.itemsAvailableSelectOne}"
                                            var="xesisCodigoItem"
+                                           itemLabel="#{xesisCodigoItem.xesisDescri}"
                                            itemValue="#{xesisCodigoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="Ventana" for="xevenCodigo" />
+                        <p:selectOneMenu id="xevenCodigo" value="#{xeopcOpcioController.selected.xevenCodigo}" required="true" requiredMessage="Se requiere una ventana">
+                            <f:selectItems value="#{xevenVentanController.itemsAvailableSelectOne}"
+                                           var="xevenCodigoItem"
+                                           itemLabel="#{xevenCodigoItem.xevenDescri}"
+                                           itemValue="#{xevenCodigoItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{xeopcOpcioController.create}" value="#{bundle.Save}" update="display,:XeopcOpcioListForm:datalist,:growl" oncomplete="handleSubmit(args,'XeopcOpcioCreateDialog');"/>

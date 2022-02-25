@@ -15,7 +15,7 @@
 
         <ui:define name="body">
             <h:form id="XeuxpUsupeListForm">
-                <!--<p:panel header="#{bundle.ListXeuxpUsupeTitle}">-->
+                <p:panel header="#{bundle.ListXeuxpUsupeTitle}">
                     <p:dataTable id="datalist" value="#{xeuxpUsupeController.items}" var="item"
                                  selectionMode="single" selection="#{xeuxpUsupeController.selected}"
                                  paginator="true"
@@ -51,9 +51,9 @@
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListXeuxpUsupeTitle_xeusuUsuar}"/>
+                                <h:outputText value="#{bundle.ListXeuxpUsupeTitle_xeusuCodigo}"/>
                             </f:facet>
-                            <h:outputText value="#{item.xeusuUsuar}"/>
+                            <h:outputText value="#{item.xeusuCodigo}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{xeuxpUsupeController.prepareCreate}" update=":XeuxpUsupeCreateForm" oncomplete="PF('XeuxpUsupeCreateDialog').show()"/>
@@ -62,7 +62,7 @@
                             <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{xeuxpUsupeController.destroy}" update=":growl,datalist" disabled="#{empty xeuxpUsupeController.selected}"/>
                         </f:facet>
                     </p:dataTable>
-                <!--</p:panel>-->
+                </p:panel>
             </h:form>
 
             <ui:include src="Create.xhtml"/>

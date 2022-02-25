@@ -16,15 +16,15 @@
                         
                         <p:panelGrid columns="2" >
                             <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempCodigo}" for="feempCodigo" />
-                        <p:inputText id="feempCodigo" value="#{feempEmpleController.selected.feempCodigo}" title="#{bundle.CreateFeempEmpleTitle_feempCodigo}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempCodigo}"/>
+                        <p:inputText id="feempCodigo" value="#{feempEmpleController.selected.feempCodigo}" title="#{bundle.CreateFeempEmpleTitle_feempCodigo}" autocomplete="off" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempCodigo}"/>
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempApelli}" for="feempApelli" />
-                        <p:inputText id="feempApelli" value="#{feempEmpleController.selected.feempApelli}" title="#{bundle.CreateFeempEmpleTitle_feempApelli}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempApelli}"/>
+                        <p:inputText id="feempApelli" value="#{feempEmpleController.selected.feempApelli}" title="#{bundle.CreateFeempEmpleTitle_feempApelli}" autocomplete="off" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempApelli}"/>
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempNombre}" for="feempNombre" />
-                        <p:inputText id="feempNombre" value="#{feempEmpleController.selected.feempNombre}" title="#{bundle.CreateFeempEmpleTitle_feempNombre}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempNombre}"/>
+                        <p:inputText id="feempNombre" value="#{feempEmpleController.selected.feempNombre}" title="#{bundle.CreateFeempEmpleTitle_feempNombre}" autocomplete="off" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempNombre}"/>
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempCedula}" for="feempCedula" />
-                        <p:inputText id="feempCedula" value="#{feempEmpleController.selected.feempCedula}" title="#{bundle.CreateFeempEmpleTitle_feempCedula}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempCedula}"/>
+                        <p:inputText id="feempCedula" value="#{feempEmpleController.selected.feempCedula}" title="#{bundle.CreateFeempEmpleTitle_feempCedula}" autocomplete="off" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempCedula}"/>
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempEmail}" for="feempEmail" />
-                        <p:inputText id="feempEmail" value="#{feempEmpleController.selected.feempEmail}" title="#{bundle.CreateFeempEmpleTitle_feempEmail}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempEmail}"/>
+                        <p:inputText id="feempEmail" value="#{feempEmpleController.selected.feempEmail}" title="#{bundle.CreateFeempEmpleTitle_feempEmail}" autocomplete="off" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempEmail}"/>
                         </p:panelGrid>
                         <p:panelGrid columns="1" rendered="#{feempEmpleController.selected != null}">
                             <p:graphicImage value="#{feempEmpleController.imagepreview}" style="width:200px;"  cache="false" id="Image"/>
@@ -38,12 +38,12 @@
                                 <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempFecnac}" for="feempFecnac" />
                         <p:calendar id="feempFecnac" pattern="MM/dd/yyyy" value="#{feempEmpleController.selected.feempFecnac}" title="#{bundle.EditFeempEmpleTitle_feempFecnac}" required="true" requiredMessage="#{bundle.EditFeempEmpleRequiredMessage_feempFecnac}" showOn="button"/>
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempTelef}" for="feempTelef" />
-                        <p:inputText id="feempTelef" value="#{feempEmpleController.selected.feempTelef}" title="#{bundle.CreateFeempEmpleTitle_feempTelef}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempTelef}"/>
+                        <p:inputText id="feempTelef" value="#{feempEmpleController.selected.feempTelef}" title="#{bundle.CreateFeempEmpleTitle_feempTelef}" autocomplete="off" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempTelef}"/>
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempCarfam}" for="feempCarfam" />
-                        <p:inputText id="feempCarfam" value="#{feempEmpleController.selected.feempCarfam}" title="#{bundle.CreateFeempEmpleTitle_feempCarfam}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempCarfam}"/>
+                        <p:inputText id="feempCarfam" value="#{feempEmpleController.selected.feempCarfam}" title="#{bundle.CreateFeempEmpleTitle_feempCarfam}" autocomplete="off" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempCarfam}"/>
                         
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempDiscapa}" for="feempDiscapa" />
-                        <p:inputText id="feempDiscapa" value="#{feempEmpleController.selected.feempDiscapa}" title="#{bundle.CreateFeempEmpleTitle_feempDiscapa}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempDiscapa}"/>
+                        <p:inputText id="feempDiscapa" value="#{feempEmpleController.selected.feempDiscapa}" title="#{bundle.CreateFeempEmpleTitle_feempDiscapa}" autocomplete="off" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempDiscapa}"/>
                         
                         <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_pecarCargo}" for="pecarCargo" />
                         <p:selectOneMenu id="pecarCargo" value="#{feempEmpleController.selected.pecarCargo}" required="true" requiredMessage="#{bundle.EditFeempEmpleRequiredMessage_pecarCargo}">
@@ -79,7 +79,7 @@
                         </p:selectOneMenu>
                                 
                                 <p:outputLabel value="#{bundle.CreateFeempEmpleLabel_feempDirec}" for="feempDirec" />
-                        <p:inputText id="feempDirec" value="#{feempEmpleController.selected.feempDirec}" title="#{bundle.CreateFeempEmpleTitle_feempDirec}" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempDirec}"/>
+                        <p:inputText id="feempDirec" value="#{feempEmpleController.selected.feempDirec}" title="#{bundle.CreateFeempEmpleTitle_feempDirec}" autocomplete="off" required="true" requiredMessage="#{bundle.CreateFeempEmpleRequiredMessage_feempDirec}"/>
                             </p:panelGrid>
                      
                             

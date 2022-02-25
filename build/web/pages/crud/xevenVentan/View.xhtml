@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="XevenVentanViewDlg" widgetVar="XevenVentanViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewXevenVentanTitle}">
+            <h:form id="XevenVentanViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{xevenVentanController.selected != null}">
+                        <h:outputText value="#{bundle.ViewXevenVentanLabel_xevenCodigo}"/>
+                        <h:outputText value="#{xevenVentanController.selected.xevenCodigo}" title="#{bundle.ViewXevenVentanTitle_xevenCodigo}"/>
+                        <h:outputText value="#{bundle.ViewXevenVentanLabel_xevenDescri}"/>
+                        <h:outputText value="#{xevenVentanController.selected.xevenDescri}" title="#{bundle.ViewXevenVentanTitle_xevenDescri}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="XevenVentanViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

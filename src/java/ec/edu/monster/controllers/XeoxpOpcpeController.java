@@ -40,8 +40,8 @@ public class XeoxpOpcpeController implements Serializable {
     }
 
     protected void setEmbeddableKeys() {
-        selected.getXeoxpOpcpePK().setXeperCodigo(selected.getXeperPerfi().getXeperCodigo());
-        selected.getXeoxpOpcpePK().setXeopcCodigo(selected.getXeopcOpcio().getXeopcCodigo());
+        selected.getXeoxpOpcpePK().setXeperCodigo(selected.getXeoxpOpcpePK().getXeperCodigo());
+        selected.getXeoxpOpcpePK().setXeopcCodigo(selected.getXeoxpOpcpePK().getXeopcCodigo());
     }
 
     protected void initializeEmbeddableKey() {

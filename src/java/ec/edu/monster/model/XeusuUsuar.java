@@ -51,7 +51,7 @@ public class XeusuUsuar implements Serializable {
     private String xeusuCodigo;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 106)
     @Column(name = "XEUSU_PASWD")
     private String xeusuPaswd;
     @Basic(optional = false)

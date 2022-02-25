@@ -1,8 +1,8 @@
 package ec.edu.monster.controllers;
 
 import ec.edu.monster.model.XeuxpUsupe;
-import ec.edu.monster.jsf.util.JsfUtil;
-import ec.edu.monster.jsf.util.JsfUtil.PersistAction;
+import ec.edu.monster.controllers.util.JsfUtil;
+import ec.edu.monster.controllers.util.JsfUtil.PersistAction;
 import ec.edu.monster.facade.XeuxpUsupeFacade;
 import ec.edu.monster.model.XeusuUsuar;
 
@@ -39,6 +39,10 @@ public class XeuxpUsupeController implements Serializable {
         return selected;
     }
 
+    public void setSelected(XeuxpUsupe selected) {
+        this.selected = selected;
+    }
+    
     public String getPerfil() {
         return perfil;
     }
@@ -55,14 +59,9 @@ public class XeuxpUsupeController implements Serializable {
         this.codUserDel = codUserDel;
     }
     
-
-    public void setSelected(XeuxpUsupe selected) {
-        this.selected = selected;
-    }
-
     protected void setEmbeddableKeys() {
-        selected.getXeuxpUsupePK().setXeperCodigo(selected.getXeperPerfi().getXeperCodigo());
-        selected.getXeuxpUsupePK().setXeusuCodigo(selected.getXeusuUsuar().getXeusuCodigo());
+        selected.getXeuxpUsupePK().setXeperCodigo(selected.getXeuxpUsupePK().getXeperCodigo());
+        selected.getXeuxpUsupePK().setXeusuCodigo(selected.getXeuxpUsupePK().getXeusuCodigo());
     }
 
     protected void initializeEmbeddableKey() {
@@ -171,7 +170,7 @@ public class XeuxpUsupeController implements Serializable {
             return key;
         }
 
-        String getStringKey(ec.edu.monster.model.XeuxpUsupePK value) {
+         String getStringKey(ec.edu.monster.model.XeuxpUsupePK value) {
             StringBuilder sb = new StringBuilder();
             sb.append(value.getXeperCodigo());
             sb.append(SEPARATOR);
@@ -240,7 +239,5 @@ public class XeuxpUsupeController implements Serializable {
     public void setCodUser(XeusuUsuar codUser) {
         this.codUser = codUser;
     }
-
-
 
 }

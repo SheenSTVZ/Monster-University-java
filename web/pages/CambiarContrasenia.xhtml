@@ -13,7 +13,7 @@
                 <p:growl id="growl" life="3000"/>
                 <p:panelGrid columns="2" id="pGrid" class="cuadro">
                     <p:outputLabel value="Correo:" for="correo" />
-                    <p:inputText id="correo" value="#{loginController.usuario.feempCodigo.feempEmail}" required="true" />
+                    <p:inputText id="correo" value="#{loginController.usuario.feempCodigo.feempEmail}" required="true" autocomplete="off"/>
                     <p:outputLabel value="Contraseña Antigua" for="passAn"/>
                     <p:password required="true" id="passAn" value="#{xeusuUsuarController.antPassword}"/>
                     <p:outputLabel value="Contraseña Nueva" for="passNu"/>

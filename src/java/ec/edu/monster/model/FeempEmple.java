@@ -91,9 +91,7 @@ public class FeempEmple implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "FEEMP_EMAIL")
     private String feempEmail;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
+    @Size(max = 10)
     @Column(name = "FEEMP_CEDULA")
     private String feempCedula;
     @Lob
@@ -147,7 +145,7 @@ public class FeempEmple implements Serializable {
         this.feempCodigo = feempCodigo;
     }
 
-    public FeempEmple(String feempCodigo, String feempApelli, String feempNombre, Date feempFecnac, String feempDirec, String feempTelef, String feempEmail, String feempCedula, short feempCarfam, int feempDiscapa) {
+    public FeempEmple(String feempCodigo, String feempApelli, String feempNombre, Date feempFecnac, String feempDirec, String feempTelef, String feempEmail, short feempCarfam, int feempDiscapa) {
         this.feempCodigo = feempCodigo;
         this.feempApelli = feempApelli;
         this.feempNombre = feempNombre;
@@ -155,7 +153,6 @@ public class FeempEmple implements Serializable {
         this.feempDirec = feempDirec;
         this.feempTelef = feempTelef;
         this.feempEmail = feempEmail;
-        this.feempCedula = feempCedula;
         this.feempCarfam = feempCarfam;
         this.feempDiscapa = feempDiscapa;
     }

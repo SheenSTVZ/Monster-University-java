@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="XevenVentanEditDlg" widgetVar="XevenVentanEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditXevenVentanTitle}">
+            <h:form id="XevenVentanEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{xevenVentanController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditXevenVentanLabel_xevenCodigo}" for="xevenCodigo" />
+                        <p:inputText id="xevenCodigo" value="#{xevenVentanController.selected.xevenCodigo}" title="#{bundle.EditXevenVentanTitle_xevenCodigo}" required="true" requiredMessage="#{bundle.EditXevenVentanRequiredMessage_xevenCodigo}"/>
+                        <p:outputLabel value="#{bundle.EditXevenVentanLabel_xevenDescri}" for="xevenDescri" />
+                        <p:inputText id="xevenDescri" value="#{xevenVentanController.selected.xevenDescri}" title="#{bundle.EditXevenVentanTitle_xevenDescri}" required="true" requiredMessage="#{bundle.EditXevenVentanRequiredMessage_xevenDescri}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{xevenVentanController.update}" value="#{bundle.Save}" update="display,:XevenVentanListForm:datalist,:growl" oncomplete="handleSubmit(args, 'XevenVentanEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="XevenVentanEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

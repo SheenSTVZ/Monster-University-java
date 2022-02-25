@@ -22,11 +22,11 @@
                                            var="xeperPerfiItem"
                                            itemValue="#{xeperPerfiItem}"/>
                         </p:selectOneMenu>
-                        <p:outputLabel value="#{bundle.CreateXeuxpUsupeLabel_xeusuUsuar}" for="xeusuUsuar" />
-                        <p:selectOneMenu id="xeusuUsuar" value="#{xeuxpUsupeController.selected.xeusuUsuar}" required="true" requiredMessage="#{bundle.EditXeuxpUsupeRequiredMessage_xeusuUsuar}">
+                        <p:outputLabel value="#{bundle.CreateXeuxpUsupeLabel_xeusuCodigo}" for="xeusuCodigo" />
+                        <p:selectOneMenu id="xeusuCodigo" value="#{xeuxpUsupeController.selected.xeusuCodigo}" required="true" requiredMessage="#{bundle.EditXeuxpUsupeRequiredMessage_xeusuCodigo}">
                             <f:selectItems value="#{xeusuUsuarController.itemsAvailableSelectOne}"
-                                           var="xeusuUsuarItem"
-                                           itemValue="#{xeusuUsuarItem}"/>
+                                           var="xeusuCodigoItem"
+                                           itemValue="#{xeusuCodigoItem}"/>
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{xeuxpUsupeController.create}" value="#{bundle.Save}" update="display,:XeuxpUsupeListForm:datalist,:growl" oncomplete="handleSubmit(args,'XeuxpUsupeCreateDialog');"/>

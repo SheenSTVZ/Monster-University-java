@@ -4,12 +4,13 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+
     <ui:composition template="../template.xhtml">
         <ui:define name="style">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
             <link rel="stylesheet" href="style.css"/>
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
             <!-- Compiled and minified JavaScript -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         </ui:define>
@@ -18,6 +19,7 @@
         </ui:define>
         <ui:define name="body">
             <h:form>
+                <p:growl id="msgs" showDetail="true" escape="false"/>
                 <div class="content">            
                     <div class="col s12 m7">
                         <h4 class="header">Asignación de opciones a perfiles</h4>
@@ -40,29 +42,27 @@
                                         </p:selectOneMenu>
                                     </p:panelGrid>
                                 </div> 
-                                <div class="card-content">
-                                    <p:panelGrid columns="1" id="OpcionesDisponibles" >
-                                        <p:tree  value="#{asignacionOpcionesController.root}" var="node" style="margin: 0 auto;">
+                                <div class="container">
 
+                                    <div class="card-content">
+                                        <p:panelGrid columns="1" id="OpcionesDisponibles" >
+                                            <p:tree  value="#{asignacionOpcionesController.root}" 
+                                                     selectionMode="checkbox"
+                                                     selection="#{asignacionOpcionesController.selectedNodes}"
+                                                     var="node" 
+                                                     style="margin: 0 auto;">
+                                                <p:treeNode>
+                                                    <h:outputText value="#{node}" />
 
-                                            <p:treeNode>
-                                                <h:outputText value="#{node}" />
-                                            </p:treeNode>
-                                            <p:treeNode type="Opc">
-                                                <p:selectOneRadio value="#{asignacionOpcionesController.option_values[asignacionOpcionesController.getValue(node)]}" 
-                                                                  valueChangeListener="#{asignacionOpcionesController.manageChange2}" 
-                                                                  layout="grid" columns="1" unselectable="true">
-                                                    <f:selectItems value="#{node}" var="o" itemValue="#{o.getXeopcCodigo()}" itemLabel="#{o.getXeopcDescri()}" />
-
-
-                                                    <p:ajax listener="#{asignacionOpcionesController.manageChange}"/>
-                                                </p:selectOneRadio>
-                                            </p:treeNode>
-                                        </p:tree>
-                                        <p:commandButton disabled="#{asignacionOpcionesController.updating}" value="Guardar" ajax="true" action="#{asignacionOpcionesController.save()}" update=":growl">
-                                            <p:autoUpdate/>
-                                        </p:commandButton>
-                                    </p:panelGrid>
+                                                </p:treeNode>
+                                                <p:treeNode type="opc">
+                                                    <h:outputText value="#{node.getXeopcDescri()}" />
+                                                </p:treeNode>
+                                            </p:tree>
+                                             <p:commandButton value="Guardar" update="msgs"  icon="pi pi-save" styleClass="p-mt-3"
+                                                              action="#{asignacionOpcionesController.displaySelectedMultiple(asignacionOpcionesController.selectedNodes)}"/>
+                                        </p:panelGrid>
+                                    </div>
                                 </div>
                             </div>
                         </div>

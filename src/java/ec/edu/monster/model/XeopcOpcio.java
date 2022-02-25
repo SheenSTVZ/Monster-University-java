@@ -8,6 +8,7 @@ package ec.edu.monster.model;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,6 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "xeopc_opcio")
+@Cacheable(false)
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "XeopcOpcio.findAll", query = "SELECT x FROM XeopcOpcio x")
@@ -51,6 +53,9 @@ public class XeopcOpcio implements Serializable {
     @JoinColumn(name = "XESIS_CODIGO", referencedColumnName = "XESIS_CODIGO")
     @ManyToOne(optional = false)
     private XesisSiste xesisCodigo;
+    @JoinColumn(name = "XEVEN_CODIGO", referencedColumnName = "XEVEN_CODIGO")
+    @ManyToOne(optional = false)
+    private XevenVentan xevenCodigo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "xeopcOpcio")
     private Collection<XeoxpOpcpe> xeoxpOpcpeCollection;
 
@@ -88,6 +93,14 @@ public class XeopcOpcio implements Serializable {
 
     public void setXesisCodigo(XesisSiste xesisCodigo) {
         this.xesisCodigo = xesisCodigo;
+    }
+
+    public XevenVentan getXevenCodigo() {
+        return xevenCodigo;
+    }
+
+    public void setXevenCodigo(XevenVentan xevenCodigo) {
+        this.xevenCodigo = xevenCodigo;
     }
 
     @XmlTransient
